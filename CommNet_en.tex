@@ -162,50 +162,51 @@ We want to create a communications network with three equally distanced satellit
 For the controll of a spaceship, a space station or a satellite we usually need an active connection to the kerbal space center (KSC).
 But by positioning three equally distanced satellites in the same orbit around the planet we can prevent that the connection get's cut off as soon as the KSC disappeares behind the horizon. Algorithms will automaticly choose the shortest connection over as few satellites as possible.
 
-Kerbin is a relatively small planet. Kerbins 600km radius measures just one tenth of the radius of Planet Earth. Also the game won't calculate transmission time delays (\href{https://www.wikiwand.com/en/Latency_(engineering)}{Latency}), which is why we only need to ensure that the connection holds, not how good exactly the connection actually is. Another point is that we want enable an interplanetary communicatin with our CommNet. Because of that we want to choose an antenna strength that automaticly must be stronger than what we would need for a communication between our three satellites. In order to survey as much from the round planets surface as possible (just think about the difficult to reach poles), we will set the satellites into a high orbit. The further away the observer from a sphere, the larger the visible surface.
+Kerbin is a relatively small planet. Kerbins 600km radius measures just one tenth of the radius of Planet Earth. Also the game won't calculate transmission time delays (\href{https://www.wikiwand.com/en/Latency_(engineering)}{Latency}), which is why we only need to ensure that the connection holds, not how good exactly the connection actually is. Another point is that we want enable an interplanetary communicatin with our CommNet. Because of that we want to choose an antenna strength that automaticly must be stronger than what we would need for a communication between our three satellites. In order to survey as much from the round planets surface as possible (just think about the difficult to reach poles), we will set the satellites into a high orbit. The further away the observer from a sphere, the larger the visible surface gets.
+
+However, if we wanted to create an internet network, the way SpaceX does it with Starlink, then a lower orbit would be much more favourable in order to shorten the latency. But this would require much more satellites per orbit, as the communication would otherwise have to go through the planets surface, which isn't possible after all. The satellites must be at least high enough to see each other just above the horizon.
+
+We choose an equatorial orbit, mainly because it will require less fuel and therefore less weight for the rocket. Also the kerbal space center (KSC) lies directly at the equator, hence one must only ``fall'' to the east to get into orbit. In addition, the rotation of the earth will give a small boost to the rocket, as it doesn't need to create this start speed for itself. On average, you will save about \href{https://wiki.kerbalspaceprogram.com/wiki/Kerbin}{175m/s}.
+
+From experience the loss of speed resulting from atmospheric drag will be about 1000m/s. More precise calculations are neither worthwhile nor possible for that matter, as the game only simulates the impact of the surrounding air. For a start in western direction one also should calculate about 300m/s more. For further details, see the youtube video from Mike Aben \href{https://youtu.be/0BtbYVtZ9ac}{Ascent Costs of Inclined Orbits - KSP Let's Do The Math}.
+
+If you hav the commnet of kerbins surface deactivated, you won't be able to controll the rocket anymore as soon as the KSC loses vision. You can either activate the ground system and keep it on, until your own sattelite commnet stands, or you keep it off and use a kOS-script to release the satellites (more on that later).
+
+If in case you already have a lot of communicating space junk flying around from previous attempts, then you can just use that as a temporary replacement.
 
 
+\section{Target Orbit}
+The target orbit ought to be high enough so that you could draw an imaginary direct line from one satellite to the other without it touching the planets surface. However, the target orbit should not be too high so not to leave the sphere of influence (SOI) of the planet and sail away into infinity. The best orbit height lies somewhere in between. There is also a spezial orbit height, in which the satellite needs for one complete rotation around the planet just as long as it takes for the planet to rotate around it's own axis (One Day). Thereby a person standing on the surface of the planet will view the satellite as if it is standing still. The correct term for this kind of orbit is ``synchronous orbit''.
 
-Wollten wir allerdings ein Internetnetzwerk erstellen, ähnlich wie SpaceX es mit Starlink tut, dann wäre es vorteilhafter einen niedrigen Orbit zu wählen um die Latenzzeit zu verkürzen. Dies erfordert allerdings mehr Satelliten pro Orbit, da die Kommunikation bei nur drei Satelliten durch die Planetenoberfläche gehen müsste, was natürlich nicht geht. Die Satelliten müssen schon so hoch sein, dass jeder Satellit den Nächsten oberhalb des Horizonts erblicken kann.
+The \href{https://wiki.kerbalspaceprogram.com/wiki/Kerbin}{KSP Wiki} says for the height of a synchronous orbit $2863.334km$. This means that all objects in this orbit need 5h 59m 9.4s for one complete rotation around the planet (orbital period).
 
-Einen equatorialen Orbit wählen wir vorallem deshalb, weil er weniger Treibstoff, und damit auch weniger Gewicht für die Rakete nachher bedeutet. Das Kerbal Space Center (KSC) befindet sich außerdem direkt am Äquator, weshalb man nur noch in Erdumdrehungsrichtung hin umfallen braucht. Die Erdumdrehung gibt der Rakete außerdem einen kleinen Geschwindigkeitsboost, da die Rakete diese Startgeschwindigkeit nicht selbst erzeugen muss. Durchschnittlich spart man so gut \href{https://wiki.kerbalspaceprogram.com/wiki/Kerbin}{175m/s}.
 
-Der Geschwindigkeitsverlust durch die Atmosphäre auf Kerbin beträgt erfahrungsgemäß in etwa 1000m/s. Genauere Berechnungen sind hier nicht sinnvoll und wahrscheinlich auch gar nicht möglich, da das Spiel den Einfluss der Atmosphäre ja nur simuliert. Bei einem Start nach Westen sollte man etwa 300m/s mehr einberechnen. Mehr dazu im YouTube Video von MikeAben \href{https://youtu.be/0BtbYVtZ9ac}{Ascent Costs of Inclined Orbits - KSP Let's Do The Math}.
-
-Wenn das Kerbin-eigene CommNet deaktiviert ist, ist keine Kontrolle der Rakete mehr möglich, sollte sie das KSC nicht mehr im Blick haben. Entweder man aktiviert vorher das CommNet und lässt es an, bis das eigene Satellitennetzwerk steht, oder man lässt es aus, aber muss dann das erste Aussetzen der Kerbin-Satelliten von einem kOS-Script ausführen lassen. Mehr dazu später.
-
-Hat man bereits genug funkenden Weltraumschrott von früheren Versuchen umherfliegen, kann man am Anfang natürlich auch Diesen für eine provisorische Kommunikationshilfe verwenden.
-
-\section{Zielorbit}
-Der Zielorbit sollte mindestens so hoch sein, dass ein imaginärer gerader Strich von einem Satelliten zum Nächsten nie die Planetenoberfläche berührt. Der Orbit sollte aber auch nicht so hoch sein, dass die Satelliten den Einflussbereich des Planeten verlassen und einfach davonsegeln. Die beste Orbithöhe liegt irgendwo dazwischen. Es gibt auch eine ganz besondere Orbithöhe, bei der der Satellit für eine Umrundung um den Planeten genauso lange braucht, wie der Planet selber für eine komplette Drehung (einen Tag) benötigt. Dadurch bleibt der Satellit von einem Beobachter auf dem Boden aus gesehen immer am selben Fleck am Himmel. Die bezeichnung dafür ist \gq{Synchronous Orbit}.
-
-Im KSP Wiki wird die Höhe für den Synchronous Orbit für Kerbin mit $2863.334km$ angegeben. Alle Objekte in diesem Orbit benötigen damit 5h 59m 9.4s um einmal um den Planeten herumzufliegen.
-
-\subsection{Alternativer Zielorbit}
+\subsection{Alternative Orbit}
 \href{https://youtu.be/PZAkiXNJIqc}{Tipp: Geostationary, Molniya, Tundra, Polar \& Sun Synchronous Orbits Explained - Scott Manley}\\
-Will man alternativ einen anderen Orbit, so muss man sich ein wenig mit Geometrie auseinandersetzen ;)
+If you still want a different orbit, then you will have to deal with a little bit of geometry ;)
 
-Zuserst berechnen wir den niedrigst möglichen Orbit für die gewählte Anzahl Satelliten.
-Die Orbithöhe vom Mittelpunkt (Radius \emph{r}) des Planeten errechnet sich durch die Formel:
+First we calculate the lowest possible orbit for our chosen number of satellites.
+The orbit height from the planet's center (radius \emph{r}) we get through this formular:
 \begin{equation}
 r_{orbit} = \frac{r_{planet}}{\sin \frac{\theta}{2}}
 \end{equation}
-Der Winkel $\theta$ des Vielecks errechnet sich durch:
+The angle $\theta$ of the polygon is being calculated by:
 \begin{equation}
 \theta = \frac{(n-2) \cdot 180^{\circ}}{n}
 \end{equation}
-$(n-2) \cdot 180^{\circ}$ steht für die Winkelsumme im Vieleck und
-\emph{n} für die Anzahl Ecken, bzw. für die Anzahl der Satelliten im Orbit.
-In unserem Fall handelt es sich um ein Dreieck $\rightarrow$ also $\theta = 60^{\circ}$ für einen der drei Innenwinkel.
+$(n-2) \cdot 180^{\circ}$ stands for the sum of angles from the regular polygon and
+\emph{n} for the number of angles, or rather for the number of satellites in orbit.
+In our case we have a triangle $\rightarrow$ so $\theta = 60^{\circ}$ for each of the three interior angles.
 $$
 r_{orbit} = \frac{r_{planet}}{\sin \frac{\theta}{2}} = \frac{600km}{\sin \frac{60^\circ}{2}} = 1200km
 $$
-Für uns bedeutet das $1200km - 600km = 600km$ Entfernung von der Oberfläche des Planeten für den niedrigsten Orbit, der mit drei Satelliten am Äquator möglich ist.
+For us this means that we have got a $1200km - 600km = 600km$ distance from the surface of the planet for the lowest possible orbit that one can achieve with three satellites at the equator.
 
-Mit der Zeit werden sich die Satelliten auf ihrer Bahn verschieben, sofern sie nicht gewartet werden oder das SafeFile nicht bearbeitet wird: \href{https://youtu.be/0wXVm3M2I2w}{Kerbal Space Program - Savefile Editing \& Orbital Parameters Tutorial (Fixed) - Scott Manley}.
-Das bedeutet, dass früher oder Später die Verbindung zwischen den Satelliten durch die Planetoberfläche unterbrochen wird. Darum ist es ratsam für diesen niedrigen Orbit einen kleinen Puffer von mehreren Kilometern hinzuzuaddieren.
+As time goes by the satellites will slitely change their position between each other, provided that they aren't being maintained or the safefile isn't being manipulated: \href{https://youtu.be/0wXVm3M2I2w}{Kerbal Space Program - Savefile Editing \& Orbital Parameters Tutorial (Fixed) - Scott Manley}.
+This means that sooner or later the connection between the satellites will be interrupted by the surface of the planet. For this reason it's advisable to add a small buffer of a few kilometers to a low orbit.
 
-\medskip Die Orbital Period für den Zielorbit (final orbit) berechnet sich nun durch:
+
+\medskip The orbital period of the target orbit (final orbit) is obtained by:
 
 \begin{equation}
 T_{f} = 2\pi \sqrt{\frac{a_{f}^{3}}{\mu}} = 2\pi \sqrt{\frac{(1200km)^{3}}{\mu}} = 4395s
@@ -213,13 +214,13 @@ T_{f} = 2\pi \sqrt{\frac{a_{f}^{3}}{\mu}} = 2\pi \sqrt{\frac{(1200km)^{3}}{\mu}}
 
 \begin{flushright}
 $\mu = 3.5316 \cdot 10^{12} \frac{m^{3}}{s^{2}} = 3531.6 \frac{km^{3}}{s^{2}}$ \\
-(Kerbin Standard gravitational parameter)
+(kerbin standard gravitational parameter)
 \end{flushright}
 \begin{flushright}
-In einem kreisrunden Orbit ist übrigens die SemimajorAxis \emph{a}\\ gleich dem Orbitradius \emph{r}, der Periapsis \emph{Pe} und der Apoapsis \emph{Ap}.
+In a circular orbit, the semimajor axis \emph{a}\\ is equal to the orbit radius \emph{r}, the periapsis \emph{Pe} and the apoapsis \emph{Ap}.
 \end{flushright}
 
-\medskip Jetzt aber wieder zurück zum \gq{Synchronous Orbit}.
+\medskip But back to the ``Synchronous Orbit''.
 
 \section{Transferorbit}
 \href{https://en.wikipedia.org/wiki/Geostationary_transfer_orbit}{(GTO von engl. geosynchronous / geostationary transfer orbit)}\\
