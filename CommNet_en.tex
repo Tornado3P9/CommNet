@@ -715,54 +715,55 @@ Addons:
 
 \chapter{Programming the rocket}
 \section{Kerbal Operating System (kOS)}
-\href{https://ksp-kos.github.io/KOS/}{kOS} ist ein Communityprojekt der Kerbal Space Program Fangemeinde. Im Grunde handelt es sich dabei um einen Autopiloten, den du selber schreibst. Der Mod bringt ein paar eigene Bauteile ins Spiel ein, von denen mindestens eines an der Rakete oder dem Satelliten befestigt sein muss. Jedes dieser Bauteile besteht aus einem \gq{Scriptable Control System} und einem Speichermedium mit begrenzter Speicherkapazität. Bedenke außerdem, dass der Kontrollchip zusätzlich Strom benötigt.\\
+\href{https://ksp-kos.github.io/KOS/}{kOS} is a community project of the Kerbal Space Program fanbase. It's basically an autopilot that you have to write for yourself. The mod introduces a few own parts into the game, of which at least one has to be put onto the vessel in order to work. Each part consists of a ``scriptable control system'' and a limited storage medium. Also keep in mind that the control chip will require additional power.\\
 \linebreak 
-Die File-Endung für Kerboscript ist immer \gq{ks}, also z.B. \gq{launch.ks}.
-Wenn man im Simulator die kOS-Konsole öffnet, dann kann man mit dem Befehl
+The File-Endung for Kerboscript is always ``ks'', for example ``launch.ks''.
+When opening the kOS-console in the simulator, one can then switch to the ``harddrive'' of the spacecraft by typing
 \begin{code}
 SWITCH TO 1.
 \end{code}
 \linebreak 
-auf die \gq{Festplatte} des Raumschiffs wechseln. \emph{1} steht für das Schiff und \emph{0} für das KSC. Da es unrealistisch ist, wenn die Rakete durchgängig vom KSC aus gesteuert würde, so laden viele Spieler lieber ihr Script zuerst auf die Rakete.
+\emph{1} stands for the vessel and \emph{0} for the Kerbal Space Center. Because it seems unrealistic for the rocket to be always control by the KSC, most players will transfer their script to the rocket before launching.
 \begin{code}
 list.
 \end{code}
 \linebreak 
-zeigt dir die Scripts an, die sich auf der aktiven Festplatte befinden. Bedenke, dass der Punkt am Ende des Befehls zur Syntax hinzugehört. Ohne diesen werden nur Fehlermeldungen ausgespuckt.
+shows the scripts that lie on the active harddrive. Keep in mind that the period at the end of an instruction is part of the syntax. Without it you will only receive error messages.
 \begin{code}
 COPYPATH("0:launch", "").
 \end{code}
 \linebreak 
-kopiert das Script \gq{launch.ks} von der Festplatte \emph{0} (KSC) auf die aktive Festplatte (hier \emph{1}).
+copies the script ``launch.ks'' from the harddrive \emph{0} (KSC) onto the active harddrive (here \emph{1}).
 \begin{code}
-RUN launch. // oder auch
+RUN launch. // or else
 RUNPATH("launch").
 \end{code}
 \linebreak 
-starten beide das Script. Die \gq{runpath}-Methode ist lediglich eine neuere Variante.
-Das nachfolgenden Codezeilen erlauben die Angabe von zusätzlichen Parametern.
+both start the script. The ``runpath'' method is simply a newer version.
+The following lines of code allow for the use of additional parameters set afterwards by the user.
 \begin{code}
-runpath("launch",90,90000,0.35). // oder auch
+runpath("launch",90,90000,0.35). // or else
 run launch(90,90000,0.35).
 \end{code}
 \linebreak 
-Die \textbf{90} steht für die Kompass-Drehrichtung der Rakete nach Osten, \textbf{90000} für die Zielorbithöhe in Metern und \textbf{0.35} für die anfängliche Kippgeschwindigkeit, da sich das Script für unterschiedliche Raketentypen verwenden lässt und die selben Einstellungen nicht immer optimal sind. \\
+The parameter \textbf{90} stands for the compass direction of rotation ``east'', \textbf{90000} for the target orbit height in metern and \textbf{0.35} for the tilting speed at the beginning, because the script is supposed to be used for different rocket types, which requiers the ability to use slightly different settings. \\
 
-Für den Anfang empfehle ich die Tutorialreihe von CheersKevin - \href{https://www.youtube.com/playlist?list=PLb6UbFXBdbCoCm1e65qfDOCdK_qIBtX3D}{kOS for Newbies}.
-Selbst für noch nicht Programmierer geeignet! Mit dem Script lassen sich nicht nur Raketen, sondern auch Drohnen, Quadkopter und Flugzeuge fliegen.
-Zwei eindrucksvolle Beipiele siehe hier: \href{https://youtu.be/f4SytD3xR0k}{HoverBot drone}, \href{https://youtu.be/oAzGwSFi9Qg}{SpaceX Falcon Heavy}.\\
+For the beginning I want to suggest the tutorial-series from CheersKevin - \href{https://www.youtube.com/playlist?list=PLb6UbFXBdbCoCm1e65qfDOCdK_qIBtX3D}{kOS for Newbies}.
+Even suitable for future programmers! Not only can you launch rockets with those scripts, but also drones and even Airplanes.
+Two very impressive examples see here: \href{https://youtu.be/f4SytD3xR0k}{HoverBot drone}, \href{https://youtu.be/oAzGwSFi9Qg}{SpaceX Falcon Heavy}.\\
 
 
-\section{Reaching LEO - Einen niedrigen Erdorbit erreichen}
-Den ersten stabilen Orbit zu erreichen ist immer eine Herausforderung, sowohl hier, als auch in der echten Welt. Die Rakete muss neben der Anziehungskraft auch noch gegen Airodynamik ankämpfen und wenn man eine zu hohe Geschwindigkeit in zu niedriger Höhe erreicht, dann auch noch mit Hitze- und G-Force-Belastung zurechtkommen. Hinzukommt, dass die Rakete ausgeglichen sein muss, indem der \gq{center of lift} unterhalb der \gq{center of mass} liegen muss. Also eigentlich genau, wie bei einem Dartpfeil. Natürlich hilft es sehr, dass die Engines \gq{gimbeln} können (d.h., sie sind in verschiedene Richtungen hin ausrichtbar). So können sie auch ohne die Hilfe von Flügeln die Rakete über sich balancieren. In der echten Welt wird außerdem besonders auch auf das \gq{Wetter} in großer Höhe geachtet. In einigen Höhen können die Winde nämlich Geschwindigkeiten von 1000km/h erreichen, was genug ist um die Rakete mitten durch zu brechen. Zusätzlich sind auch noch hohe statische Ladungsunterschiede in der Luft ein potentielles Risiko, da die Rakete wie ein Blitzableiter wirken kann und elektronische Geräte ernsthaften Schaden nehmen könnten. Apollo 12 war z.B. Opfer zwei solcher Blitzeinschläge, kam jedoch glücklicherweise unbeschadet davon.\\
+\section{Reaching LEO - Low Earth Orbit}
+Reaching the first stable orbit is always a challenge, here as well in the real world. Apart from the gravitational pull, the rocket also has to fight aero dynamics and if you reach a too high velocity in too low of an altitude, even with heat and g-force. Furthermore the rocket has to be balanced by positioning the ``center of lift'' below the ``center of mass''. So just like a dart. Of course it helps a lot that most engines have the ability to ``gimble'' - that is, they can rotate the nozzle into multiple directions.
+In this way they can balance the rocket without the need of wings. In the real world you also want to pay attention to the weather in high altutudes. That's because in some heights, winds can reach high speeds of about 1000km/h, which is enough to split a rocket in half. Additionally there are also risks of lightning strikes because in different charged air layers the rocket might act just like a lightning rod. This in turn could potentially damage onboard circuits. Apollo 12 was victim to two such lightning strikes but was lucky insofar as it didn't create any permanent damage.\\
 
-Wenn du jetzt einen Raketenstart betrachtest, dann wird dir auffallen, dass die Rakete gar nicht nur gerade nach oben fliegt, sondern in einigen Fällen schon eine Sekunde nach dem Start zur Seite kippt und damit ihr \gq{Pitching Maneuver} startet. Das geschieht oft schon sehr früh, da die Rakete noch langsam genug ist, um die Flugrichtung in kurzer Zeit drastisch zu ändern.\\
-Aber warum macht die Rakete das?\\
+In you ever watched a rocket launch, then you might have noticed that the rocket didn't just fly straight up, but that it began to tilt sideways after just a few seconds. This is called the ``pitching maneuver''.\\
+But why are rockets doing that?\\
 
-Die Rakete wird innerhalb der dichten Atmosphäre von dieser stark abgebremst. Deshalb müsste sie eigentlich zuerst nach oben fliegen, bis sie sich außerhalb der Atmosphäre befindet und sich dann hart nach \gq{rechts} drehen und solange Geschwindigkeit aufbauen, bis sie sich in einem Orbit befindet. Das geht in der Theorie vielleicht ganz ok, aber eine Geschwindigkeit von 8km/s parallel zur Erdoberfläche zu erreicht braucht lange. Da müsste man am Anfang schon sehr hoch fliegen, damit man insgesamt genug Zeit übrig hat, um auch noch die nötige horzontale Geschwindigkeit zu erreichen.
-Wer mitdenkt wird natürlich feststellen, dass man so eine Menge Energie verschwendet, da die Geschwindigkeit nach oben ja nicht hilft, das Gefährt in einen Orbit zu setzen.
-Darum hat man sich auch für eine kurvenförmige Flugbahn entschieden, die Steil beginnt und über die Zeit langsam abflacht, bis man schließlich nur noch in horizontaler Richtung beschleunigt.\\
-\emph{Nochmal zur Wiederholung: Die Rakete fliegt nur nach oben um aus der abbremsenden Atmosphäre herauszukommen. Würde die Rakete vom Mond starten, so könnte sie sich die Energie nach oben eigentlich sparen und direkt zur Seite starten. Die einzige Einschränkung ist da vielleicht die Stärke der Düse (Thrust to Weight Ratio) und die Höhe der Berge.}\\
+The only reason why an object can stay in orbit is because it's parallel velocity to the surface is greater than the attraction in the direction of the planet. In this case the object will miss the earth while being pulled towards it, because it's speed is so fast that at the point, at which the planet has pulled the object 50 meters downwards, the curvature of the earth will also have ``made the ground 50 meters lower''.
+Back to the rocket..\\
+At low altitudes the rocket is constantly being decelerated by the atmosphere. Therefore one would normally assume that it would be the best option to leave the atmosphere as early as possible by flying straight up until it's in space. Following that, the rocket now only needs to generate speed parallel to the surface. The problem is that it normally takes a lot of time to reach the required speed of about 8km/s. In other words, you have to fly really high to have enough time left in order to reach orbital velocity. You might already have noticed that this method wastes quite a lot of energy as the horizontal speed isn't what makes one stay in orbit. That's why people decided to use a curved trajectory which begins vertically and becomes horizontal over time.\\
+\emph{Again: The rocket only goes ``up'' to get out of the atmosphere. If the rocket was standing on the surface of the moon, then it would only have to accelerate sideways. The only constraint might be the height of the mountains or the power of the engine (thrust to weight ratio)}\\
 
 %\pagebreak 
 \subsection{kOS Gravity Turn}
@@ -908,13 +909,13 @@ function getManeuverBurnTime {
 main().
 \end{lstlisting}
 \begin{flushleft}
-Die hier gezeigten Scripte stehen auch noch einmal auf \href{https://github.com/Tornado3P9/kOS_Collection}{GitHub} zum Download bereit. Manchmal ist ja der Beginn ein wenig schwer. Aber dennoch möchte ich dazu ermuntern, sich einmal selber an einem eigenen Script zu versuchen. So schwer ist das nicht und gute Beispiele, an denen man sich orientieren kann, gibt es zu Hunderten... z.B. \href{https://kos.fandom.com/wiki/KerboScript}{hier}.\\
-Alternativ gibt es für KSP auch noch den Mod \href{https://forum.kerbalspaceprogram.com/index.php?/topic/151340-19x-smart-parts-continued/}{Smart Parts} von \gq{li\-nux\-gu\-ru\-ga\-mer}, für den nicht einmal eine Programmierung nötig ist und auch super in Kombination mit dem hier vorliegenden Script verwendet werden kann. Ich selber lasse den Start- und den Circulationburn vom Script ausführen und die einzelnen Besonderheiten der Rakete (Antennen und Solarpanel ausfahren, Fairing abtrennen, usw.) überlasse ich einfach den \gq{spart parts}.\\
-Das nachfolgende Script führt einfach das nächste geplante Maneuver-Node aus. Hier auch wieder großen Dank an \href{https://www.youtube.com/playlist?list=PLb6UbFXBdbCoCm1e65qfDOCdK_qIBtX3D}{CheersKevin}.
+The script shown here is also available on \href{https://github.com/Tornado3P9/kOS_Collection}{GitHub}. The beginning is sometimes difficult. Nevertheless, I want to encourage you to try to write your own script. It's not that difficult. Also there are already many good examples which might help you start....for example \href{https://kos.fandom.com/wiki/KerboScript}{this page}.\\
+Alternatively there is the mod \href{https://forum.kerbalspaceprogram.com/index.php?/topic/151340-19x-smart-parts-continued/}{Smart Parts} from linuxgurugamer, for which you don't even need to know how to program. I myself often use this mod in combination, where kerboscript handles the launch and circulation burn and the smart parts stage the fairing and other things that might differ from one rocket to the other.\\
+The following script just executes the next maneuver node on the active vessel's orbit. A big thanks to \href{https://www.youtube.com/playlist?list=PLb6UbFXBdbCoCm1e65qfDOCdK_qIBtX3D}{CheersKevin}.
 \end{flushleft}
 
 
-\section{Anschließende Maneuver}
+\section{Next maneuver}
 \begin{lstlisting}[language=C, caption=mnv.ks]
 //--------------
 //  MANEUVER:
@@ -991,15 +992,15 @@ function removeManeuverFromFlightPlan {
 executeManeuverNode().
 \end{lstlisting}
 
-Für das Entkuppeln der Satelliten von der Rakete kann man einfach einen Timer verwenden, der die orbital period als Grundlage verwendet. Der Satellit schießt dann automatisch los, sobald seine Apoapsis oder eben der Startpunkt erreicht wurde.\\
+For decoupling the satellites from their rocket one could use a timer that uses the orbital period as basis. The satellite could then activate it's engine when the apoapsis or the start time has been reached.\\
 
 \noindent
 {\color{black} \rule{\linewidth}{0.1mm} }
 
 
-\chapter{Orbital Mechanics Crashkurs}
+\chapter{Orbital Mechanics Crash Course}
 \section{Vis-Viva Equation}
-\hypertarget{visviva}{Berechnung} des $\Delta v$-Budgets für einen \href{https://forum.kerbalspaceprogram.com/index.php?/topic/83437-illustrated-tutorial-for-orbital-rendezvous/}{Hohmann Transfer} (\href{https://imgur.com/a/DmGTv}{Hohmann Transfer}).
+\hypertarget{visviva}{Calculating} the $\Delta v$ budget for a \href{https://forum.kerbalspaceprogram.com/index.php?/topic/83437-illustrated-tutorial-for-orbital-rendezvous/}{Hohmann Transfer} (\href{https://imgur.com/a/DmGTv}{Hohmann Transfer}).
 \begin{equation}
 \label{eq:visviva1}
 \Delta v_{1} = \sqrt{\frac{\mu}{r_{1}}} \left( \sqrt{\frac{2r_{2}}{r_{1}+r_{2}}}-1 \right)
@@ -1009,14 +1010,13 @@ Für das Entkuppeln der Satelliten von der Rakete kann man einfach einen Timer v
 \Delta v_{2} = \sqrt{\frac{\mu}{r_{2}}} \left( 1-\sqrt{\frac{2r_{1}}{r_{1}+r_{2}}} \right)
 \end{equation}
 
-$\Delta v_{1}$ steht für den Aufwand des ersten Burns, der die eine Seite des Orbits auf die Höhe des Zielorbits anhebt.
+$\Delta v_{1}$ stands for the cost of the first burn that raises one side of the orbit to the height of the target orbit.
 
-$\Delta v_{2}$ steht für den Aufwand des zweiten Burns, der an dem Schnittpunkt mit dem Zielorbit ausgeführt wird und den Eigenen in den Zielorbit überführt.
+$\Delta v_{2}$ stands for the cost of the second burn that will be executed at the intersection with the target orbit and will transfer the current orbit towards the target orbit.
 
-Beide zusammen ergeben das $\Delta v$-Budget eines jeden Raumfahrzeugs, das von einem runden Orbit in einen anderen runden Orbit wechselt. \\
-Anstatt $\sqrt{\frac{2r}{r_{1}+r_{2}}}$ kann man auch $\sqrt{\frac{r}{a}}$ schreiben. Der ursprüngliche Bruch geteilt durch zwei ergibt im Zähler den Radius und im Nenner die SemimajorAxis.\\
-Für die Herkunft der Formel empfehle ich das Video von \href{https://youtu.be/7AkakB5TOSw}{Mike Aben}.
-Oder hier auf Wikiwand: \href{https://www.wikiwand.com/en/Hohmann_transfer_orbit}{Hohmann transfer orbit(en)}, \href{https://www.wikiwand.com/de/Hohmann-Transfer}{Hohmann-Transfer(de)}.
+Together they give the the $\Delta v$ budget of each spacecraft that transfers from one circular orbit into another circular orbit. \\
+Instead of $\sqrt{\frac{2r}{r_{1}+r_{2}}}$ one can also write $\sqrt{\frac{r}{a}}$. The original fraction divided by two shows the radius as the numerator and the semimajor axis as the denominator.\\
+For learning the origin of this formular I suggest the video from \href{https://youtu.be/7AkakB5TOSw}{Mike Aben}. Or perhaps on Wikiwand: \href{https://www.wikiwand.com/en/Hohmann_transfer_orbit}{Hohmann transfer orbit}.
 
 \medskip
 Die \href{https://de.wikipedia.org/wiki/Vis-Viva-Gleichung}{Vis-Viva-Gleichung} für die \hypertarget{velocityatorbitposition}{Momentangeschwindigkeit eines Körpers}, der sich auf einer Bahn um einen anderen Körper befindet, lautet:
