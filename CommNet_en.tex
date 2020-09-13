@@ -703,7 +703,7 @@ Resonant Orbit Calculator:
 \begin{itemize}
   \item \url{https://meyerweb.com/eric/ksp/resonant-orbits/}
 \end{itemize}
-KSP Wiki list:
+KSP Wiki Collection:
 \begin{itemize}
 \item \url{https://wiki.kerbalspaceprogram.com/wiki/Calculation_tools}
 \end{itemize}
@@ -1019,83 +1019,44 @@ Instead of $\sqrt{\frac{2r}{r_{1}+r_{2}}}$ one can also write $\sqrt{\frac{r}{a}
 For learning the origin of this formular I suggest the video from \href{https://youtu.be/7AkakB5TOSw}{Mike Aben}. Or perhaps on Wikiwand: \href{https://www.wikiwand.com/en/Hohmann_transfer_orbit}{Hohmann transfer orbit}.
 
 \medskip
-Die \href{https://de.wikipedia.org/wiki/Vis-Viva-Gleichung}{Vis-Viva-Gleichung} für die \hypertarget{velocityatorbitposition}{Momentangeschwindigkeit eines Körpers}, der sich auf einer Bahn um einen anderen Körper befindet, lautet:
+The \href{https://en.wikipedia.org/wiki/vis-viva_equation}{Vis-viva equation} for the \hypertarget{velocityatorbitposition}{instantaneous velocity of a body} that is located on an orbit around another body is called:
 \begin{equation}
 v = \sqrt{GM \left( \frac{2}{r} - \frac{1}{a} \right) }
 \end{equation}
-Dabei ist $r$ der Abstand der beiden Körper, $v$ die Relativgeschwindigkeit zwischen den Körpern, $a$ die große Halbachse der Bahn ( $a > 0$ für eine Ellipse, $a \rightarrow \infty$ für eine Parabel und $a < 0$ für eine Hyperbel), G die Gravitationskonstante und m sowie M die Massen der beiden Körper. \\
-In \gq{Orbital Mechanics} ist der \gq{standard gravitational parameter} eines \gq{Astronomischen Objekts} das Produkt der Gravitationskonstante G und der Masse M des Körpers.
-Meist wird der griechische Buchstabe $\mu$ an Stelle von GM verwendet.\\
-Interessant ist, dass in Orbital Mechanics vorwiegend die Geschwindigkeit zur Berechnung verwendet wird und dabei die Masse eines Raumgefährts eher in den Hintergrund tritt, was sich natürlich durch die enormen Massen der Planeten erklären lässt.\\
-Ist $a = r$ für alle $r$, entartet die Kepler-Bahn zu einer Kreisbahn; der Körper besitzt überall den gleichen Abstand $r$ vom Schwerpunkt und entsprechend überall dieselbe Geschwindigkeit
+where:
+\begin{itemize}
+\item $v$ is the relative speed of the two bodies
+\item $r$ is the distance between the two bodies
+\item $a$ is the length of the semi-major axis ($a > 0$ for ellipses, $a \rightarrow \infty$ for parabolas, and $a < 0$ for hyperbolas)
+\item G is the gravitational constant
+\item M is the mass of the central body
+\end{itemize}
+The product of GM can also be expressed as the standard gravitational parameter using the Greek letter $\mu$.\\
+If $a = r$ for all $r$, then the Keplerian orbit will degenerate to a circular orbit; the body always has got the same distance $r$ from it's center of gravity and accordingly always the same \textbf{orbital velocity}
 \begin{equation}
 v_{1} = \sqrt{\frac{G(m+M)}{r}} = \sqrt{\frac{\mu}{r}}
 \end{equation}
-die \textit{Kreisbahngeschwindigkeit} oder erste kosmische Geschwindigkeit.\\
-Damit ein Körper den Einfluss des Zentralgestirns überwinden kann, muss die große Halbachse unendlich groß werden, es gilt also mit $a \rightarrow \infty$:
+The formula for \textbf{escape velocity} can be obtained from the Vis-viva equation by taking the limit as $a$ approaches $\infty$:
 \begin{equation}
 v_{2} = \sqrt{\frac{2G(m+M)}{r}} = v_{1}\cdot\sqrt{2}
 \end{equation}
-Diese Geschwindigkeit heißt Fluchtgeschwindigkeit oder zweite kosmische Geschwindigkeit. Die Umlaufbahn des Körpers ist dann nicht mehr geschlossen, sondern offen. Ist die Umlaufgeschwindigkeit des Körpers dabei genau gleich $v_{2}$, ist die Umlaufbahn eine Parabel, bei größeren Umlaufgeschwindigkeiten dagegen (bei ansonsten gleichbleibendem Abstand $r$ eine Hyperbel und die große Halbachse $a$ wird (formell) negativ.
+If the orbital velocity is equal to $v_{2}$, then the orbit isn't a closed circle anymore, but rather a parabola. At even higher speeds, while $r$ being the same, the path becomes a hyperbola and the semi-major axis $a$ becomes (formally) negative.
 
-\section{Anderer Kram}
-Space-Hardware, das heißt Raumschiffe, Satelliten und sondergleichen, bleibt nicht etwa deshalb im Weltall, weil es dort draußen keine Gravitation gäbe und man sich im Weltall automatisch in Schwerelosigkeit befände.
-Tatsächlich ist die Anziehungskraft der Erde in der Entfernung des Mondes nicht sonderlich viel geringer, als auf der Erdoberfläche.
-Würde man beispielsweise einen Weltraumfahrstuhl bauen, der bis über die dichte Atmosphäre ins \gq{Weltall} hinausreicht, hätte man auf der obersten Plattform immernoch den selben Erdanziehungseindruck...vielleicht 0.01\% weniger oder so.
-Sollte jemand dort von der Brüstung stolpern, dann würde er schnurgerade nach unten fallen.
-Dennoch könnte man neben sich und sogar unter sich Satelliten und Raumschiffe vorbeiflitzen sehen.
-
-\emph{Es sei gesagt, dass das mit bloßem Auge kaum möglich ist, da sich die Objekte im Orbit mit etwa 7-8km/s bewegen. Und außerdem wird schon aus Sicherheitsgründen dafür gesorgt, dass sich Weltraumobjekte nicht zu nahe kommen und sich gegenseitig gefährden. Nicht nur, dass man Zusammenstöße natürlich verhindern will, da bei einem solchen wahrscheinlich nicht viel übrig bleiben würde, sondern auch deswegen, weil die jetzt verstreuten Einzelstücke gleich eine ganze Reihe anderer Satelliten gefährden könnten und im Schlimmsten Fall zu einer Kettenreaktion führen könnten, bei der der nahe Erdbereich (LEO) so sehr von Debree übersäht wird, dass eine weitere Nutzung des Weltraums zu gefährlich wird. Aus diesem Grund werden möglichst alle herumfliegenden Teile genauestens und mit mittlerweile sehr umständlichen Verfahren katalogisiert und analysiert um schon im Vorfeld vor möglichen Zusammenstößen gewarnt zu sein. Dank dieser Tatsache ist es möglich, kleinste Objekte von wenigen Zentimetern zu observieren und z.B. die ISS rechtzeitig auf eine sicherere Umlaufbahn ausweichen zu lassen.
-Aber nun wieder zurück zur Erdanziehungskraft.}
-
-Die Anziehungskraft ist also selbst in großer Höhe noch vorhanden. Das einzige, was einen Satelliten im Orbit hält ist nämlich seine horizontale Geschwindigkeit parallel zur Erdoberfläche.
-
-Ich werde oft gefragt, wie es denn sein kann, dass in der Höhe der ISS die Anziehungskraft fast die gleiche ist, wie auf der Erdoberfläche, denn schließlich gäbe es ja die Astronauten, die in der ISS herumschweben können. Warum fallen die nicht auf den Boden der ISS?\\
-$\rightarrow$ Nun, das liegt daran, dass der gesamte ISS-Koloss, samt Gasinhalt und biologischer Masse als Einheit betrachtet werden kann, bei der sich alle Einzelteile mit der gleichen Geschwindigkeit parallel zueinander bewegen. Würde man die Gaswolke und die Metallteile um den Astronauten wegzaubern, dann würde er sich ungehindert mit der selben Geschwindigkeit, wie eben auch schon auf seiner Umlaufbahn weiterbewegen.
-
-Wenn du jetzt einen Raketenstart betrachtest, dann wird dir auffallen, dass die Rakete gar nicht nur gerade nach oben fliegt, sondern in einigen Fällen schon eine Sekunde nach dem Start zur Seite kippt und damit ihr \gq{Pitching Maneuver} startet. \emph{Das geschieht oft schon sehr früh, da die Rakete noch langsam genug ist, um die Flugrichtung in kurzer Zeit drastisch zu ändern.}
-
-Aber warum macht die Rakete das?\\
-$\rightarrow$ Die Rakete wird, solange sie sich noch innerhalb der dichten Atmosphäre befindet, abgebremst. Deshalb müsste sie eigentlich zuerst nach oben fliegen, bis sie sich außerhalb der Atmosphäre befindet und sich dann hart nach \gq{rechts} drehen und solange Geschwindigkeit aufbauen, bis sie sich in einem Orbit befindet. Das geht in der Theorie vielleicht ganz ok, aber eine Geschwindigkeit von 8km/s parallel zur Erdoberfläche zu erreicht braucht lange. Da müsste man am Anfang schon sehr hoch fliegen, damit man insgesamt genug Zeit hat, auch noch die nötige horzontale Geschwindigkeit zu erreichen.
-Wer mitdenkt wird natürlich feststellen, dass man so ja eine Menge Energie verschwendet, da die Geschwindigkeit nach oben ja nicht hilft, das Gefährt in einen Orbit zu setzen.\\
-Darum hat man sich auch für eine kurvenförmige Flugbahn entschieden, die Steil beginnt und über die Zeit langsam abflacht, bis man schließlich nur noch in horizontaler Richtung Gas gibt.\
-\emph{Nochmal zur Wiederholung: Die Rakete fliegt nur nach oben um aus der abbremsenden Atmosphäre herauszukommen. Würde die Rakete vom Mond starten, so könnte sie sich die Energie nach oben eigentlich sparen und direkt zur Seite starten. Die einzige Einschränkung ist da vielleicht die Stärke der Düse (Thrust to Weight Ratio) und die Höhe der Berge.}\\
+You will sometimes see the mass \textit{m} of the spacecraft being omitted. This, of course, can easily be explained, as it's mass compared to that of the planets is so insignificantly small that an effect is just not measureable. If for instance you plan to circle an Asteroid, then of course you will have to account for that also. (Not in the game though. Only the sun, planets and moons have gravity there.)
 
 
+\section{Other Stuff}
+Also insteresting to note: Until an \textbf{altitude} of somewhere around 500km there is still a lot of atmosphere left, enough to brake out and deorbit satellites over time. In the past there were only spy-satellites in very low orbits. 340km is already the minimum height that a satellite can hold without deorbiting.
+But even the ISS, with it's 400km is not that high, if you think about it. When the space shuttles were still flying, the ISS was even lower. On this altitude, the residual atmosphere is still so high that the ISS has to raise it's orbit about once a year. There is a wonderful animation \href{https://qz.com/296941/interactive-graphic-every-active-satellite-orbiting-earth/}{QUARTZ - every active satellite orbiting earth} that illustrates this pendulum motion very well.\\
+And another three-dimensional representation of all near earth objects you can find at \href{http://stuffin.space/}{stuffin.space}. You can even hide certain satellites and for instance only display GPS satellites. By the way, GPS satellites usually live inside the \href{https://en.wikipedia.org/wiki/Medium_Earth_orbit}{Medium Earth Orbit (MEO)}.
 
-\emph{Auch interessant zu wissen: Besonders starke Raketenmotoren braucht es eigentlich nur auf der Erde. Einerseits wegen der Anziehungskraft, gegen die die Rakete am Anfang kämpfen muss und andererseits wegen der abbremsenden Atmosphäre.\\
-Ein Satellit, der sich bereits in einem Orbit befindet, kann sich dafür seelenruhig Zeit lassen, da jede Energie, die er in die Geschwindigkeit in eine bestimmte Richtung steckt in gewisser Weise niemals wieder verloren geht. (Es besteht auch auf der Höhe der ISS eine gewisse Restatmosphäre. Deshalb muss sie alle paar Monate einen kleinen Schub in Flugrichtung geben um nicht irgendwann ungewollt in einen niedrigeren Orbit zu gelangen.)\\
-Aus diesem Grund funktionieren auch \gq{Ion thruster} so gut bei Satelliten. Obwohl sie einen so schwachen Rückstoß erzeugen, dass man mit ihnen nicht einmal Modellbot bewegen könnte, sind sie auf der äußerst effizient bei der Umwandlung von chemischer Energie in kinetische Energie (Treibstoff wird umgewandelt in Bewegung). Da sie außerdem Monate lang Schub geben können, ist es möglich, mit ihnen über die Zeit hinweg eine viel höhere Geschwindigkeit zu erreichen, als es mit einer gängigen Raketendüse möglich gewesen wäre.}\\
+In case of \textbf{SpaceX Starlink}, it's satellites only stay in orbit for as long they still have fuel in their tanks. That makes maintenance of those networks a little bit more difficult, but you have the certainty that any defect satellites will deorbit automaticly after 5 years and that no space debree will ever be left behind.
+Unlike other satellite providers who also use ion thruster, SpaceX decided to use Krypton as reaction mass instead of Xenon, which is more usual. Another name you may find is Hall-effect thruster (HET).
 
-\emph{Auch interessant zu wissen: Bis zu einer Höhe von etwa 500Km ist die Atmosphäre auf der Erde noch soweit vorhanden, dass Satelliten relativ schnell abgebremst werden und über die Zeit automatisch Deorbiten. In dieser Höhe befanden sich in der Vergangenheit hauptsächlich Spy-Satelliten. 340km ist da schon das Minimum, damit ein Satellit einen stabilen Orbit aufrecht erhalten kann.
-Doch auch die ISS fliegt gerade mal in einer Höhe von etwa 400Km. Als die SpaceShuttles noch flogen, flog die ISS sogar noch tiefer. Die Restatmosphäre ist in dieser Höhe noch so hoch, dass die ISS einmal im Jahr wieder ihren Orbit anheben muss. Das ist sehr schön auf \href{https://qz.com/296941/interactive-graphic-every-active-satellite-orbiting-earth/}{QUARTZ - every active satellite orbiting earth} animiert worden. Wenn man dort die Animation startet, dann sieht man, dass die ISS immer zwischen 401-422km auf und ab pendelt.\\
-Eine andere dreidimensionale Darstellung aller Erdnahen Teile auf \href{http://stuffin.space/}{stuffin.space}. Wer möchte, kann dort sogar nach einzelnen Satelliten suchen und z.B. alle außer den GPS-Satelliten ausblenden.\\
-Im Fall von SpaceX Starlink Internetsatelliten bleiben die Satelliten nur so lange im Orbit, wie sie noch Treibstoff haben. Das macht die Wartung solcher Satellitennetzwerke zwar etwas komplizierter, aber dafür hat man die Gewissheit, dass defekte Satelliten automatisch innerhalb von 5 Jahren deorbiten und daher kein Spacedebree hinterlassen. Anders als bei den meisten Satelliten mit Ionentriebwerk benutzt SpaceX anstatt des üblichen Xenon lieber Krypton als Reaktionsmasse.\\
-Andere verwendete Bezeichnungen für Ionentriebwerke sind unter anderem Hallantrieb oder Hall-Effekt-Antrieb/Hall-effect thruster (HET).}\\
-
-GPS-Satelliten sind übrigens im \href{https://en.wikipedia.org/wiki/Medium_Earth_orbit}{Medium Earth Orbit (MEO)} angesiedelt.\\
-\href{https://upload.wikimedia.org/wikipedia/commons/8/82/Orbitalaltitudes.jpg}{Orbital altitudes of many significant satellites of earth}\\
-\href{https://upload.wikimedia.org/wikipedia/commons/b/b4/Comparison_satellite_navigation_orbits.svg}{Comparison satellite navigation orbits}\\
-
-
-\href{https://youtu.be/pR5VJo5ifdE}{DRONE Solar System Model- How far is Planet 9? - Mark Rober}\\
-\href{https://youtu.be/Kj4524AAZdE}{Watch This Guy Build a Massive Solar System in the Desert | Short Film Showcase - National Geographic}\\
-\href{https://www.helioviewer.org/}{Sun and Earth to Scale}\\
-
-What Kerbal Space Program doesn't teach:\\
-Reaction Wheels sind viel stärker als in der Realität.\\
-RCS (Reaction-Control-Thruster) ist ebenfalls stärker als in der Realität.\\
-
-(\href{https://de.wikipedia.org/wiki/Keplersche_Gesetze}{Keplersche Gesetze} - Je höher der Orbit, desto geringer die Geschwindigkeit)\\
-
-\gq{Factor of safety} ist für Raketen der Firma ULA zwischen 1.1 und 1.25, aber niemals darüber.
-Dieser Faktor ist dafür da um einen Sicherheitspuffer zur Verfügung zu haben, sollten Umstände eintreffen,
-die vorher nicht mitbedacht wurden. Bei Raketen ist der Sicherheitsfaktor sehr gering, da man
-die Rakete ja so leicht wie möglich belassen will und jeder Millimeter, den man z.B. der Dicke
-der Treibstofftanks hinzufügt, macht diesen zwar stabiler, aber fügt über die vielen Meter Fläche viele Kilo zusätzliches Gewicht hinzu, was stärkere Engines und mehr nötiger Treibstoff bedeuten könnte. Im Gegensatz dazu hat ein Traktor einen sehr viel höheren Sicherheitsfaktor, denn bei diesem sind Stabilität und Kraft sehr viel mehr Wert als Eigengewicht und Geschwindigkeit.
-Siehe auch \href{https://youtu.be/o0fG_lnVhHw}{HOW ROCKETS ARE MADE (Rocket Factory Tour - United Launch Alliance) - Smarter Every Day 231}.
-
-%Delta v ist das Integral der Beträge aller Geschwindigkeitsänderungen längs der gewünschten Trajektorie (ohne Gravitationseinwirkung oder Reibungsverlust durch die Atmosphäre).
+\textbf{Factor of safety} often lies between 1.1 and 1.25, as is the case for ULA's rockets.
+It expresses how much stronger a system is than it needs to be for an intended load.
+For spacecrafts this factor is usually very low, because every millimeter that you add to the thickness of a tank wall, will probably add many kilos or even tons of extra weight, which in turn requires a stronger engine and more fuel...which adds more weight...wich reduces the payload mass that the rocket can bring with it into space.\\
+In contrast, a tractor can have a much higher FoS, because stability and sheer power are much more important  than are in this case weight or speed. See also \href{https://youtu.be/o0fG_lnVhHw}{HOW ROCKETS ARE MADE (Rocket Factory Tour - United Launch Alliance) - Smarter Every Day 231}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1115,12 +1076,12 @@ Siehe auch \href{https://youtu.be/o0fG_lnVhHw}{HOW ROCKETS ARE MADE (Rocket Fact
 \begin{center}
 	\colorbox{ghell}{%
 		\parbox{0.8\linewidth}{
-		Ich versichere, die vorliegende Arbeit selbstst\"andig ohne fremde Hilfe verfasst 
-		und keine anderen Quellen und Hilfsmittel als die angegebenen benutzt zu haben. 
-		Die aus anderen Werken w\"ortlich entnommenen Stellen oder dem Sinn nach 
-		entlehnten Passagen sind durch Quellenangaben eindeutig kenntlich gemacht.
-		\par\bigskip\bigskip\bigskip\bigskip
-		\hspace*{0.8cm}Ort, Datum \hfill Unterschrift\hspace*{0.8cm}
+		Hereby, I declare that I have composed the presented paper independently on my own and without any 				other resources than the ones indicated. All thoughts taken directly or indirectly from external 				sources are properly denoted as such.
+		\par
+		\begin{center}
+		\includegraphics[width=0.8\textwidth]{bilder/sign}
+		\end{center}
+		\hspace*{0.8cm}Place, Date \hfill Signature\hspace*{0.8cm}
 		}
 	}
 \end{center}
