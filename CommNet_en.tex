@@ -77,7 +77,6 @@
 \urlstyle{same}
 
 %%%% own shortcuts %%%%
-\newcommand{\gq}[1]{\glqq #1\grqq}
 \newcommand{\bild}[3]{%
 	\begin{figure}[htbp]
 	\begin{center}
@@ -119,7 +118,8 @@
 \vspace{20mm}
 \noindent
 \textsf{\LARGE Master's Thesis}\\[0.4ex]
-\textsf{\large zur Erlangung des akademischen Grades M.A.}
+\textsf{\small In Partial Fulfillment of the Requirements for the Degree of M.Sc.}
+%\textsf{\small In Partial Fulfillment of the Requirements for the Degree of\\Master of Science (M.Sc.)}
 
 \vspace{5mm}
 \noindent
@@ -131,7 +131,7 @@
 
 \vspace{5mm}
 \noindent
-{\Large\textsf{A web of three relay satellites per body\\ to ensure a full coverage of the kerbin system}}
+{\Large\textsf{A web of three relay satellites per body\\ to ensure a full coverage of the Kerbin system}}
 
 
 \vfill
@@ -157,20 +157,20 @@ second examiner: Valentina Kerman
 
 \bildscaled{Kerbin}{kerbin}{Kerbin Relay Network}{0.5}
 
-We want to create a communications network with three equally distanced satellites in an equatorial orbit around planet kerbin. There is a simple reason for this:
+We want to create a communications network with three equally distanced satellites in an equatorial orbit around planet Kerbin. There is a simple reason for this:
 
-For the controll of a spaceship, a space station or a satellite we usually need an active connection to the kerbal space center (KSC).
-But by positioning three equally distanced satellites in the same orbit around the planet we can prevent that the connection get's cut off as soon as the KSC disappeares behind the horizon. Algorithms will automaticly choose the shortest connection over as few satellites as possible.
+For the control of a spaceship, a space station or a satellite we usually need an active connection to the Kerbal Space Center (KSC).
+But by positioning three equally distanced satellites in the same orbit around the planet, we can prevent that the connection get's cut off as soon as the KSC disappeares behind the horizon. Algorithms will automaticly choose the shortest connection over as few satellites as possible.
 
-Kerbin is a relatively small planet. Kerbins 600km radius measures just one tenth of the radius of Planet Earth. Also the game won't calculate transmission time delays (\href{https://www.wikiwand.com/en/Latency_(engineering)}{Latency}), which is why we only need to ensure that the connection holds, not how good exactly the connection actually is. Another point is that we want enable an interplanetary communicatin with our CommNet. Because of that we want to choose an antenna strength that automaticly must be stronger than what we would need for a communication between our three satellites. In order to survey as much from the round planets surface as possible (just think about the difficult to reach poles), we will set the satellites into a high orbit. The further away the observer from a sphere, the larger the visible surface gets.
+Kerbin is a relatively small planet. Kerbin's 600km radius measures just one tenth of the radius of planet Earth. Also the game won't calculate transmission time delays (\href{https://www.wikiwand.com/en/Latency_(engineering)}{Latency}), which is why we only need to ensure that the connection holds, not how good exactly the connection actually is. Another point is that we want to enable an interplanetary communication with our CommNet. Because of that we want to choose an antenna strength that automaticly must be stronger than what we would need for a communication between our three satellites. In order to survey as much from the round planet's surface as possible (just think about the difficult to reach poles), we will set the satellites into a high orbit. The further away the observer from a sphere, the larger the visible surface gets.
 
-However, if we wanted to create an internet network, the way SpaceX does it with Starlink, then a lower orbit would be much more favourable in order to shorten the latency. But this would require much more satellites per orbit, as the communication would otherwise have to go through the planets surface, which isn't possible after all. The satellites must be at least high enough to see each other just above the horizon.
+However, if we wanted to create an internet network, the way SpaceX does it with Starlink, then a lower orbit would be much more favourable in order to shorten the latency. But this would require much more satellites per orbit, as the communication would otherwise have to go through the planet's surface, which isn't possible after all. The satellites must be at least high enough to see each other just above the horizon.
 
-We choose an equatorial orbit, mainly because it will require less fuel and therefore less weight for the rocket. Also the kerbal space center (KSC) lies directly at the equator, hence one must only ``fall'' to the east to get into orbit. In addition, the rotation of the earth will give a small boost to the rocket, as it doesn't need to create this start speed for itself. On average, you will save about \href{https://wiki.kerbalspaceprogram.com/wiki/Kerbin}{175m/s}.
+We choose an equatorial orbit, mainly because it will require less fuel and therefore less weight for the rocket. Also the Kerbal Space Center lies directly at the equator, hence one must only ``fall'' to the east to get into orbit. In addition, the rotation of the earth will give a small boost to the rocket, as it doesn't need to create this start speed for itself. On average, you will save about \href{https://wiki.kerbalspaceprogram.com/wiki/Kerbin}{175m/s}.
 
 From experience the loss of speed resulting from atmospheric drag will be about 1000m/s. More precise calculations are neither worthwhile nor possible for that matter, as the game only simulates the impact of the surrounding air. For a start in western direction one also should calculate about 300m/s more. For further details, see the youtube video from Mike Aben \href{https://youtu.be/0BtbYVtZ9ac}{Ascent Costs of Inclined Orbits - KSP Let's Do The Math}.
 
-If you hav the commnet of kerbins surface deactivated, you won't be able to controll the rocket anymore as soon as the KSC loses vision. You can either activate the ground system and keep it on, until your own sattelite commnet stands, or you keep it off and use a kOS-script to release the satellites (more on that later).
+If you have the ground stations on Kerbin deactivated, you won't be able to control the rocket anymore as soon as the KSC loses vision. You can either activate the ground system and keep it on, until your own satellite system stands, or you keep it off and use a kOS-script to release the satellites (more on that later).
 
 If in case you already have a lot of communicating space junk flying around from previous attempts, then you can just use that as a temporary replacement.
 
@@ -214,42 +214,43 @@ T_{f} = 2\pi \sqrt{\frac{a_{f}^{3}}{\mu}} = 2\pi \sqrt{\frac{(1200km)^{3}}{\mu}}
 
 \begin{flushright}
 $\mu = 3.5316 \cdot 10^{12} \frac{m^{3}}{s^{2}} = 3531.6 \frac{km^{3}}{s^{2}}$ \\
-(kerbin standard gravitational parameter)
+(Kerbin standard gravitational parameter)
 \end{flushright}
 \begin{flushright}
 In a circular orbit, the semimajor axis \emph{a}\\ is equal to the orbit radius \emph{r}, the periapsis \emph{Pe} and the apoapsis \emph{Ap}.
 \end{flushright}
 
-\medskip But back to the ``Synchronous Orbit''.
+\medskip But back to the ``synchronous orbit''.
 
 \section{Transfer Orbit}
 \href{https://en.wikipedia.org/wiki/Geostationary_transfer_orbit}{(GTO von engl. geosynchronous / geostationary transfer orbit)}\\
-Now the question is how actually we want to deploy the satellites into their orbit while at the same time spacing them at equal distances.
+Now the question is how actually do we want to deploy the satellites into their orbit while at the same time spacing them at equal distances.
 The youtuber ``Stratzenblitz75'' has made a great video on this question.
 \href{https://youtu.be/3Qb_gcJyGQI}{KSP/RSS - Building a Comm Network with Math! - [Stratlab EP1]}
 
-We measure (or calculate) the time a satellite spends in the target orbit for one complete rotation around the planet. That time is also called ``orbital period''. In our case we already know from the KSP Wiki that the orbital period is about 6 hours which is the same as one kerbal day.
-And we want release three equally distanced satellites in this orbit. This means that each satellite has a temporal distance of 2 hours (1/3 of it's orbit) to the next one.
+We measure (or calculate) the time a satellite spends in the target orbit for one complete rotation around the planet. That time is also called ``orbital period''. In our case we already know from the KSP Wiki that the orbital period is about 6 hours which is the same as one Kerbin Day.
+And we want to release three equally distanced satellites in this orbit. This means that each satellite has a temporal distance of 2 hours (1/3 of it's orbit) to the next one.
 
-The next thought would be that maybe we could just release the satellites one after the other at the same spot in the target orbit. The released satellite will of course then fly on in his orbit and make place for the next one. If we play our cards right, then we will release the next satellite only after the former one has completed a distance of exactly 1/3 of it's orbit.
+The next thought would be that maybe we could just release the satellites one after the other at the same spot in the target orbit. The released satellite will of course then fly on in it's orbit and make place for the next one. If we play our cards right, then we will release the next satellite only after the former one has completed a distance of exactly 1/3 of it's orbit.
 
 This, in turn, is possible by first putting all three satellites onto one single rocket, which will then pass the exact spot periodically.
-The orbit of the rocket must have the form of an ellipse. The highest part of the orbit is called apoapsis and is exactly the one that passes the target orbit. The lowest part of the orbit is called periapsis (you will also hear things like apogee or perigee) and hase been deliberately chosen to make the orbital period exactly 2/3 of the target orbit.
+The orbit of the rocket must have the form of an ellipse. The highest part of the orbit is called apoapsis and is exactly the one that passes the target orbit. The lowest part of the orbit is called periapsis (you will also hear things like apogee or perigee) and has been deliberately chosen to make the orbital period exactly 2/3 of the target orbit.
 Now, everytime the rocket passes it's apoapsis, a new satellite will be released.
-After three full circles around the planet, all the satellites will hopefully have been deployed. Now the rocket can begin it's deorbit burn to lower it's periapsis and to burn up in the atmosphere and simultaneously reduce space debris. We do that for safety reasons, but in KSP it primarily improves the runtime performance, as less parts will have to be rendered. Because the population density on kerbin is very low, it isn't a problem to crash your parts into the planet, but in real life you try to make sure that the parts burn up in the atmosphere before hitting the ground.
-Alternatively the is also a button inside the KSC Observation Center to delete those parts.
+After three full circles around the planet, all the satellites will hopefully have been deployed. Now the rocket can begin it's deorbit burn to lower it's periapsis and to burn up in the atmosphere and simultaneously reduce space debris. We do that for safety reasons, but in KSP it primarily improves the runtime performance, as less parts will have to be rendered. Because the population density on Kerbin is very low, it isn't a problem to crash your parts into the planet, but in real life you try to make sure that the parts burn up in the atmosphere before hitting the ground.
+Alternatively there is also a button inside the KSC Observation Center to delete those parts.
 
 If, however, the lowest part of this tranfer orbit goes through the surface of the planet (precisely because the target orbit is set so low), then we can just change it's orbital period to something, that isn't 2/3 but rather 5/6 of the target orbit.
 This will hopefully place the periapsis above the planet's surface (and it's atmosphere).
 However it should be noted that in order to reach the goal, now we can only release one satellite every two circles around the planet, instead of every round with a 2/3 orbit.
 In this case the orbital period ammounts to $5/6 \cdot 6h = 5h$.
 
-If, however, the lower part of this orbit is even now still too close to the planet, then we can decide choose a 4/3 orbit. This way the periapsis will be at the height of the target orbit and the apoapsis higher than that. In this case the orbital period ammounts to $4/3 \cdot 6h = 8h$.
+If, however, the lower part of this orbit is even now still too close to the planet, then we can decide to choose a 4/3 orbit. This way the periapsis will be at the height of the target orbit and the apoapsis higher than that. In this case the orbital period ammounts to $4/3 \cdot 6h = 8h$.
 
 The closer the tranfer orbit is to the target orbit, the better. The satellite will have to spend less energy to get into it's final orbit. This in turn leads to a smaller satellite, as less fuel (and thrust) will be needed.\\
 
 But where do we now put the transfer orbit? All that is needed are the apoapsis and the periapsis. We already got one of the two. That's the point where the transfer orbit intersects the target orbit. We can now calculate the other point with the help of the orbital period:
 \bildscaled{i_orbit}{i_orbit}{Transfer Orbit Parameter}{0.7}
+\pagebreak 
 \begin{flushleft}
 Orbital\,Period\,from\,the\,Transfer\,Orbit:
 \end{flushleft}
@@ -298,7 +299,7 @@ Here, the orbit height amounts to $1822.7km - 600km = 1222.7km$ above the surfac
 Alternatively you can of course just use the online \href{https://meyerweb.com/eric/ksp/resonant-orbits/}{Resonant Orbit Calculator} from Eric Meyer. After choosing the planetary body the calculator will present you with the required $\Delta v$ for each satellite. Especially the visual presentation helps in the understanding.
 
 \section{Delta-v budget of each satellite}
-$\Delta v$ can be understood as the whole change in velocity without the influence of drag and other parameters. Would we simple separate the satellite from it's rocket then it actually might move away a little bit, but the orbit would stay more or less the same. To finally get into the target orbit, the satellite must first burn prograde (in the moving direction) at the apoapsis until it's velocity is as high as are all objects inside of the target orbit. For our ``synchronous orbit'' this would mean an velocity of $v = \sqrt{\frac{\mu}{r_{o}}} = 1110m/s$ for every object in this orbit, whereby $r_{o}$ must be the radius of a round orbit. The higher the orbit, the higher the potential energy and the lower the speed. Or \href{https://en.wikipedia.org/wiki/Kepler%27s_laws_of_planetary_motion}{2. Kepler's law}: ``A line segment joining a planet and the Sun sweeps out equal areas during equal intervals of time.''. Objects in a lower orbit must therefore move faster.\\
+$\Delta v$ can be understood as the whole change in velocity without the influence of drag and other parameters. Would we simple separate the satellite from it's rocket then it actually might move away a little bit, but the orbit would stay more or less the same. To finally get into the target orbit, the satellite must first burn prograde (in the moving direction) at the apoapsis until it's velocity is as high as are all objects inside of the target orbit. For our ``synchronous orbit'' this would mean a velocity of $v = \sqrt{\frac{\mu}{r_{o}}} = 1110m/s$ for every object in this orbit, whereby $r_{o}$ must be the radius of a round orbit. The higher the orbit, the higher the potential energy and the lower the speed. Or \href{https://en.wikipedia.org/wiki/Kepler%27s_laws_of_planetary_motion}{2. Kepler's law}: ``A line segment joining a planet and the Sun sweeps out equal areas during equal intervals of time.''. Objects in a lower orbit must therefore move faster.\\
 
 How much $\Delta v$ does the satellite need to get from the tranfer orbit to the target orbit?
 For this purpose we use the \hyperlink{visviva}{Vis-Viva Equation}:
@@ -322,14 +323,14 @@ $r_{2} = 3463.334km = Ap$
 
 The rocket will execute three burn maneuvers:
 \begin{enumerate}
-\item Start from the surface of kerbin, until the apoapsis is 1822.7km (1222.7km above ground).
+\item Start from the surface of Kerbin, until the apoapsis is 1822.7km (1222.7km above ground).
 \item Orbit circularisation burn at the apoapsis to raise the periapsis to the same height.
 \item Raising the apoapsis to the height of the target orbit at 3463.334km (2863.334km above ground).
 \end{enumerate}
 Of course one can also achieve the same with only two maneuvers, but then the accuracy would suffer. In addition one would waste a lot of fuel, because the longer the burn, the less the time at which the rocket will actually burn into the prograde direction.
 
 \begin{flushleft}
-Sidereal rotational velocity of kerbin: $\overrightarrow{v_{r}} = 174.94 m/s$ \\
+Sidereal rotational velocity of Kerbin: $\overrightarrow{v_{r}} = 174.94 m/s$ \\
 Air drag by experience: $\overleftarrow{drag} = 1000 m/s$ \\
 Radius of Kerbin: $r_{1} = 600km$ \\
 Radius from the first preliminary orbit: $r_{2} = 1822.7km$ \\
@@ -390,7 +391,7 @@ In this case you optimally want to raise the orbit only bit by bit by using the 
 
 
 \chapter{Mun Satellites}
-Mun is the closest neighbor to Kerbin. Strong antennas are therefore less relevant than a continuous communication connection with the vessels that might lie inside the mun shadow as seen from kerbin (behind Mun). At worst case scenario, a loss of connection will lead to a complete loss of control. This is particularly relevant if you want to land on the moon's surface.\\
+Mun is the closest neighbor to Kerbin. Strong antennas are therefore less relevant than a continuous communication connection with the vessels that might lie inside the mun shadow as seen from Kerbin (behind Mun). At worst case scenario, a loss of connection will lead to a complete loss of control. This is particularly relevant if you want to land on the moon's surface.\\
 
 Because the approach does not differ a lot from the one used on the Kerbin satellites, I won't go into detail as much.
 \medskip
@@ -401,7 +402,7 @@ $\mu = 6.5138398 \cdot 10^{10} \frac{m^{3}}{s^{2}} = 65.1384 \frac{km^{3}}{s^{2}
 SOI (Sphere of influence) $ = 2429.5591 km$
 \end{flushright}
 \bildscaled{Mun}{mun}{Mun Relay Network}{0.5}
-
+\pagebreak 
 \begin{flushleft}
 Minimal Orbit:
 \end{flushleft}
