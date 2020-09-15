@@ -239,14 +239,14 @@ Now, everytime the rocket passes it's apoapsis, a new satellite will be released
 After three full cycles, all the satellites will hopefully have been deployed. Now the rocket can begin it's deorbit burn to lower it's periapsis and to burn up in the atmosphere and simultaneously reduce space debris. This is done for safety reasons, but in KSP it primarily improves the runtime performance, as less parts will have to be rendered. Because the population density on Kerbin is very low, it isn't a problem to crash your parts into the planet, but in real life you would try to make sure that the parts burn up in the atmosphere before hitting the ground.
 Alternatively there is also a button inside the KSC Observation Center to delete those parts.
 
-If, however, the lowest part of this tranfer orbit goes through the surface of the planet (precisely because the target orbit is set so low), then we can just change it's orbital period to something, that isn't 2/3 but rather 5/6 of the target orbit.
+If, however, the lowest part of this transfer orbit goes through the surface of the planet (precisely because the target orbit is set so low), then we can just change it's orbital period to something, that isn't 2/3 but rather 5/6 of the target orbit.
 This will hopefully place the periapsis above the planet's surface (and it's atmosphere).
 However it should be noted that in order to reach the goal, now we can only release one satellite every two cycles around the planet, instead of every round with a 2/3 orbit.
 In this case the orbital period ammounts to $5/6 \cdot 6h = 5h$.
 
 If, at this point the lower part of this orbit is still too close to the planet, then we can decide to choose a 4/3 orbit. This way the periapsis will be at the height of the target orbit and the apoapsis higher than that. In this case the orbital period ammounts to $4/3 \cdot 6h = 8h$.
 
-The closer the tranfer orbit is to the target orbit, the better. The satellite will have to spend less energy to get into it's final orbit. This in turn leads to a smaller satellite, as less fuel (and thrust) will be needed.\\
+The closer the transfer orbit is to the target orbit, the better. The satellite will have to spend less energy to get into it's final orbit. This in turn leads to a smaller satellite, as less fuel (and thrust) will be needed.\\
 
 But where do we now put the transfer orbit? All that is needed are the apoapsis and the periapsis. We already got one of the two. That's the point where the transfer orbit intersects the target orbit. We can now calculate the other point with the help of the orbital period:
 \bildscaled{i_orbit}{i_orbit}{Transfer Orbit Parameter}{0.7}
@@ -301,7 +301,7 @@ Alternatively you could of course just use the online \href{https://meyerweb.com
 \section{Delta-v budget of each satellite}
 $\Delta v$ can be understood as the whole change in velocity without the influence of drag and other parameters. If we were to simply separate the satellite from it's rocket then it might move away a little bit, but the orbit would stay more or less the same. To finally get into the target orbit, the satellite must first burn prograde (in the moving direction) at the apoapsis until it's velocity is as high as are all objects inside of the target orbit. For our ``synchronous orbit'' this would mean a velocity of $v = \sqrt{\frac{\mu}{r_{o}}} = 1110m/s$ for every object in this orbit, whereby $r_{o}$ must be the radius of a round orbit. The higher the orbit, the higher the potential energy and the lower the speed. Or \href{https://en.wikipedia.org/wiki/Kepler%27s_laws_of_planetary_motion}{2. Kepler's law}: ``A line segment joining a planet and the sun sweeps out equal areas during equal intervals of time.''. Objects in a lower orbit must therefore move faster.\\
 
-How much $\Delta v$ does the satellite need to get from the tranfer orbit to the target orbit?
+How much $\Delta v$ does the satellite need to get from the transfer orbit to the target orbit?
 For this purpose we use the \hyperlink{visviva}{Vis-Viva Equation}:
 
 \begin{equation*}
@@ -430,7 +430,7 @@ The reason: Mike Aben wants the satellites to be as small and with as few antenn
 I can only recommend \href{https://youtu.be/gpQmvwU1x8c}{The Best Relay Orbit - KSP Let's Do The Math \#13} just like the other videos on this channel.
 
 \section{Delta-v budget of each satellite}
-How much $\Delta v$ does the satellite need to get from the tranfer orbit to the target orbit?
+How much $\Delta v$ does the satellite need to get from the transfer orbit to the target orbit?
 For this purpose we use the \hyperlink{visviva}{Vis-Viva Equation}:
 \begin{flushright}
 $r_{1} = 103.85km + 200km = 303.85km = Pe$ \\
@@ -622,7 +622,7 @@ $\Delta v_{2} = 76.382 m/s$
 	      &= 268.95 m/s
 	\end{split}
 	\end{equation}
-	\item Calculate rocket velocityy at the same spot, but within the transfer orbit (rocket's final orbit):
+	\item Calculate rocket velocity at the same spot, but within the transfer orbit (rocket's final orbit):
 	\begin{equation*}
 	\begin{split}
 	v_{2} &= \sqrt{\mu \left( \frac{2}{r} - \frac{1}{a} \right) } \\
@@ -747,7 +747,7 @@ runpath("launch",90,90000,0.35). // or else
 run launch(90,90000,0.35).
 \end{code}
 \linebreak 
-The parameter \textbf{90} stands for the compass direction of rotation ``east'', \textbf{90000} for the target orbit height in meters and \textbf{0.35} for the tilting speed at the beginning, because the script is supposed to be used for different rocket types, which requiers the ability to use slightly different settings. \\
+The parameter \textbf{90} stands for the compass direction of rotation ``east'', \textbf{90000} for the target orbit height in meters and \textbf{0.35} for the tilting speed at the beginning, because the script is supposed to be used for different rocket types, which requires the ability to use slightly different settings. \\
 
 For the beginning I want to suggest the tutorial-series by CheersKevin - \href{https://www.youtube.com/playlist?list=PLb6UbFXBdbCoCm1e65qfDOCdK_qIBtX3D}{kOS for Newbies}.
 Even suitable for future programmers! Not only can you launch rockets with those scripts, but also drones and even Airplanes.
@@ -1016,7 +1016,7 @@ $\Delta v_{1}$ stands for the cost of the first burn that raises one side of the
 
 $\Delta v_{2}$ stands for the cost of the second burn that will be executed at the intersection with the target orbit and will transfer the current orbit towards the target orbit.
 
-Together they give the the $\Delta v$ budget of each spacecraft that transfers from one circular orbit into another circular orbit. \\
+Together they give the $\Delta v$ budget of each spacecraft that transfers from one circular orbit into another circular orbit. \\
 Instead of $\sqrt{\frac{2r}{r_{1}+r_{2}}}$ one can also write $\sqrt{\frac{r}{a}}$. The original fraction divided by two shows the radius as the numerator and the semimajor axis as the denominator.\\
 For learning the origin of this formular I suggest the video by \href{https://youtu.be/7AkakB5TOSw}{Mike Aben}. Or perhaps on Wikiwand: \href{https://www.wikiwand.com/en/Hohmann_transfer_orbit}{Hohmann transfer orbit}.
 
