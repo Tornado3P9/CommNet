@@ -137,7 +137,7 @@
 \vfill
 \noindent
 \textsf{\large%
-first examiner: Jebediah Kerman\\
+first examiner: Seb Kerman\\
 second examiner: Valentina Kerman
 }
 
@@ -160,25 +160,25 @@ second examiner: Valentina Kerman
 We want to create a communications network with three equally distanced satellites in an equatorial orbit around planet Kerbin. There is a simple reason for this:
 
 For the control of a spaceship, a space station or a satellite we usually need an active connection to the Kerbal Space Center (KSC).
-But by positioning three equally distanced satellites in the same orbit around the planet, we can prevent that the connection get's cut off as soon as the KSC disappeares behind the horizon. Algorithms will automaticly choose the shortest connection over as few satellites as possible.
+But by positioning three equally distanced satellites in the same orbit around the planet, we can prevent the connection getting cut off as soon as the KSC disappeares behind the horizon. Algorithms will automatically choose the shortest connection using as few satellites as possible.
 
-Kerbin is a relatively small planet. Kerbin's 600km radius measures just one tenth of the radius of planet Earth. Also the game won't calculate transmission time delays (\href{https://www.wikiwand.com/en/Latency_(engineering)}{Latency}), which is why we only need to ensure that the connection holds, not how good exactly the connection actually is. Another point is that we want to enable an interplanetary communication with our CommNet. Because of that we want to choose an antenna strength that automaticly must be stronger than what we would need for a communication between our three satellites. In order to survey as much from the round planet's surface as possible (just think about the difficult to reach poles), we will set the satellites into a high orbit. The further away the observer from a sphere, the larger the visible surface gets.
+Kerbin is a relatively small planet. Kerbin's 600km radius measures just one tenth of the radius of planet Earth. Also the game won't calculate transmission time delays (\href{https://www.wikiwand.com/en/Latency_(engineering)}{Latency}), which is why we only need to ensure that the connection holds, not how good it actually is. Another point is that we want to enable interplanetary communication with our CommNet. So we want to choose a higher antenna strength than necessary for a communication between our three satellites. In order to survey as much as possible from the round planet’s surface (just think about the difficulty of reaching the poles), we will set the satellites into a high orbit. The greater the distance between the sphere and the observer, the larger the visible surface gets.
 
-However, if we wanted to create an internet network, the way SpaceX does it with Starlink, then a lower orbit would be much more favourable in order to shorten the latency. But this would require much more satellites per orbit, as the communication would otherwise have to go through the planet's surface, which isn't possible after all. The satellites must be at least high enough to see each other just above the horizon.
+However, if we wanted to create a internet network, the way SpaceX does with Starlink, then a lower orbit would be much more favourable in order to shorten the latency. But this would require much more satellites per orbit, as the communication would otherwise have to go through the planet's surface, which isn't possible after all. The satellites must be at least high enough to see each other just above the horizon.
 
-We choose an equatorial orbit, mainly because it will require less fuel and therefore less weight for the rocket. Also the Kerbal Space Center lies directly at the equator, hence one must only ``fall'' to the east to get into orbit. In addition, the rotation of the earth will give a small boost to the rocket, as it doesn't need to create this start speed for itself. On average, you will save about \href{https://wiki.kerbalspaceprogram.com/wiki/Kerbin}{175m/s}.
+We choose an equatorial orbit, mainly because it will require less fuel and therefore less weight for the rocket. Also the Kerbal Space Center lies directly at the equator, hence one must only ``fall'' to the east to get into orbit. In addition, the rotation of the earth will give a small boost to the rocket, as it doesn't need to create this starting speed by itself. On average, you will save about \href{https://wiki.kerbalspaceprogram.com/wiki/Kerbin}{175m/s}.
 
-From experience the loss of speed resulting from atmospheric drag will be about 1000m/s. More precise calculations are neither worthwhile nor possible for that matter, as the game only simulates the impact of the surrounding air. For a start in western direction one also should calculate about 300m/s more. For further details, see the youtube video from Mike Aben \href{https://youtu.be/0BtbYVtZ9ac}{Ascent Costs of Inclined Orbits - KSP Let's Do The Math}.
+From experience the loss of speed resulting from atmospheric drag will be about 1000m/s. More precise calculations are neither worthwhile nor possible for that matter, as the game only simulates the impact of the surrounding air. For a western start one should also calculate an additional 300m/s. For further details, see the Youtube video by Mike Aben \href{https://youtu.be/0BtbYVtZ9ac}{Ascent Costs of Inclined Orbits - KSP Let's Do The Math}.
 
-If you have the ground stations on Kerbin deactivated, you won't be able to control the rocket anymore as soon as the KSC loses vision. You can either activate the ground system and keep it on, until your own satellite system stands, or you keep it off and use a kOS-script to release the satellites (more on that later).
+If you have the ground stations on Kerbin deactivated, you won't be able to control the rocket anymore as soon as the KSC loses sight. You can either activate the ground system and keep it switched on, until your own satellite system is in operation, or you keep it off and use a kOS-script to release the satellites (more on that later).
 
-If in case you already have a lot of communicating space junk flying around from previous attempts, then you can just use that as a temporary replacement.
+Should you already have some space junk, with the capacity to communicate flying around from previous failed attempts, then you can just use those as a temporary replacement for a proper network.
 
 
 \section{Target Orbit}
-The target orbit ought to be high enough so that you could draw an imaginary direct line from one satellite to the other without it touching the planet's surface. However, the target orbit should not be too high so not to leave the sphere of influence (SOI) of the planet and sail away into infinity. The best orbit height lies somewhere in between. There is also a special orbit height, in which the satellite needs for one complete rotation around the planet just as long as it takes for the planet to rotate around it's own axis (One Day). Thereby a person standing on the surface of the planet will view the satellite as if it is standing still. The correct term for this kind of orbit is ``synchronous orbit''.
+The target orbit ought to be high enough so that you could draw a straight line from one satellite to another without it touching the planet's surface. However, the target orbit should not be too high so not to leave the sphere of influence (SOI) of the planet and sail away into infinity. The best orbit height lies somewhere in between. There is also a specific satellite orbit, wherein a complete rotation around the planet takes up the same amount of time as it does for the planet to rotate around it’s own axis(i.e. One Day). Thereby a person standing on the surface of the planet would view the satellite as if it was standing still. The correct term for this kind of orbit is ``synchronous orbit''.
 
-The \href{https://wiki.kerbalspaceprogram.com/wiki/Kerbin}{KSP Wiki} says for the height of a synchronous orbit $2863.334km$. This means that all objects in this orbit need 5h 59m 9.4s for one complete rotation around the planet.
+The \href{https://wiki.kerbalspaceprogram.com/wiki/Kerbin}{KSP Wiki} states $2863.334km$ as the height of a synchronous orbit. This means that all objects in this orbit need 5h 59m 9.4s for one complete rotation around the planet.
 
 
 \subsection{Alternative Orbit}
@@ -202,8 +202,8 @@ r_{orbit} = \frac{r_{planet}}{\sin \frac{\theta}{2}} = \frac{600km}{\sin \frac{6
 $$
 For us this means that we have got a $1200km - 600km = 600km$ distance from the surface of the planet for the lowest possible orbit that one can achieve with three satellites at the equator.
 
-As time goes by the satellites will slitely change their position between each other, provided that they aren't being maintained or the safefile isn't being manipulated: \href{https://youtu.be/0wXVm3M2I2w}{Kerbal Space Program - Savefile Editing \& Orbital Parameters Tutorial (Fixed) - Scott Manley}.
-This means that sooner or later the connection between the satellites will be interrupted by the surface of the planet. For this reason it's advisable to add a small buffer of a few kilometers to a low orbit.
+As time goes by the satellites will slightly change their position between each other, provided that they aren't being maintained or the safefile isn't being manipulated: \href{https://youtu.be/0wXVm3M2I2w}{Kerbal Space Program - Savefile Editing \& Orbital Parameters Tutorial (Fixed) - Scott Manley}.
+This means that sooner or later the connection between the satellites will be interrupted by the surface of the planet. For this reason it's advisable to add a small buffer of about a few kilometers to a low orbit.
 
 
 \medskip The orbital period of the target orbit (final orbit) is obtained by:
@@ -224,27 +224,27 @@ In a circular orbit, the semimajor axis \emph{a}\\ is equal to the orbit radius 
 
 \section{Transfer Orbit}
 \href{https://en.wikipedia.org/wiki/Geostationary_transfer_orbit}{(GTO von engl. geosynchronous / geostationary transfer orbit)}\\
-Now the question is how actually do we want to deploy the satellites into their orbit while at the same time spacing them at equal distances.
-The youtuber ``Stratzenblitz75'' has made a great video on this question.
+Now the question is how to actually deploy the satellites into their orbit while at the same time spacing them at equal distances.
+The Youtuber ``Stratzenblitz75'' has made a great video on this topic.
 \href{https://youtu.be/3Qb_gcJyGQI}{KSP/RSS - Building a Comm Network with Math! - [Stratlab EP1]}
 
 We measure (or calculate) the time a satellite spends in the target orbit for one complete rotation around the planet. That time is also called ``orbital period''. In our case we already know from the KSP Wiki that the orbital period is about 6 hours which is the same as one Kerbin Day.
 And we want to release three equally distanced satellites in this orbit. This means that each satellite has a temporal distance of 2 hours (1/3 of it's orbit) to the next one.
 
-The next thought would be that maybe we could just release the satellites one after the other at the same spot in the target orbit. The released satellite will of course then fly on in it's orbit and make place for the next one. If we play our cards right, then we will release the next satellite only after the former one has completed a distance of exactly 1/3 of it's orbit.
+The next thought would possibly be to just release the satellites one after the other at the same spot in the target orbit. The released satellite will of course then fly on in it's orbit and make place for the next one. If we play our cards right, then we will release the next satellite only after the former one has completed a distance of exactly 1/3 of it's orbit.
 
 This, in turn, is possible by first putting all three satellites onto one single rocket, which will then pass the exact spot periodically.
 The orbit of the rocket must have the form of an ellipse. The highest part of the orbit is called apoapsis and is exactly the one that passes the target orbit. The lowest part of the orbit is called periapsis (you will also hear things like apogee or perigee) and has been deliberately chosen to make the orbital period exactly 2/3 of the target orbit.
 Now, everytime the rocket passes it's apoapsis, a new satellite will be released.
-After three full circles around the planet, all the satellites will hopefully have been deployed. Now the rocket can begin it's deorbit burn to lower it's periapsis and to burn up in the atmosphere and simultaneously reduce space debris. We do that for safety reasons, but in KSP it primarily improves the runtime performance, as less parts will have to be rendered. Because the population density on Kerbin is very low, it isn't a problem to crash your parts into the planet, but in real life you try to make sure that the parts burn up in the atmosphere before hitting the ground.
+After three full cycles, all the satellites will hopefully have been deployed. Now the rocket can begin it's deorbit burn to lower it's periapsis and to burn up in the atmosphere and simultaneously reduce space debris. This is done for safety reasons, but in KSP it primarily improves the runtime performance, as less parts will have to be rendered. Because the population density on Kerbin is very low, it isn't a problem to crash your parts into the planet, but in real life you would try to make sure that the parts burn up in the atmosphere before hitting the ground.
 Alternatively there is also a button inside the KSC Observation Center to delete those parts.
 
 If, however, the lowest part of this tranfer orbit goes through the surface of the planet (precisely because the target orbit is set so low), then we can just change it's orbital period to something, that isn't 2/3 but rather 5/6 of the target orbit.
 This will hopefully place the periapsis above the planet's surface (and it's atmosphere).
-However it should be noted that in order to reach the goal, now we can only release one satellite every two circles around the planet, instead of every round with a 2/3 orbit.
+However it should be noted that in order to reach the goal, now we can only release one satellite every two cycles around the planet, instead of every round with a 2/3 orbit.
 In this case the orbital period ammounts to $5/6 \cdot 6h = 5h$.
 
-If, however, the lower part of this orbit is even now still too close to the planet, then we can decide to choose a 4/3 orbit. This way the periapsis will be at the height of the target orbit and the apoapsis higher than that. In this case the orbital period ammounts to $4/3 \cdot 6h = 8h$.
+If, at this point the lower part of this orbit is still too close to the planet, then we can decide to choose a 4/3 orbit. This way the periapsis will be at the height of the target orbit and the apoapsis higher than that. In this case the orbital period ammounts to $4/3 \cdot 6h = 8h$.
 
 The closer the tranfer orbit is to the target orbit, the better. The satellite will have to spend less energy to get into it's final orbit. This in turn leads to a smaller satellite, as less fuel (and thrust) will be needed.\\
 
@@ -296,10 +296,10 @@ Pe &= 2a_{i} - Ap \\
 Here, the orbit height amounts to $1822.7km - 600km = 1222.7km$ above the surface.
 
 \bigskip
-Alternatively you can of course just use the online \href{https://meyerweb.com/eric/ksp/resonant-orbits/}{Resonant Orbit Calculator} from Eric Meyer. After choosing the planetary body the calculator will present you with the required $\Delta v$ for each satellite. Especially the visual presentation helps in the understanding.
+Alternatively you could of course just use the online \href{https://meyerweb.com/eric/ksp/resonant-orbits/}{Resonant Orbit Calculator} by Eric Meyer. After choosing the planetary body the calculator will present you with the required $\Delta v$ for each satellite. Especially the visual presentation helps in the understanding.
 
 \section{Delta-v budget of each satellite}
-$\Delta v$ can be understood as the whole change in velocity without the influence of drag and other parameters. Would we simple separate the satellite from it's rocket then it actually might move away a little bit, but the orbit would stay more or less the same. To finally get into the target orbit, the satellite must first burn prograde (in the moving direction) at the apoapsis until it's velocity is as high as are all objects inside of the target orbit. For our ``synchronous orbit'' this would mean a velocity of $v = \sqrt{\frac{\mu}{r_{o}}} = 1110m/s$ for every object in this orbit, whereby $r_{o}$ must be the radius of a round orbit. The higher the orbit, the higher the potential energy and the lower the speed. Or \href{https://en.wikipedia.org/wiki/Kepler%27s_laws_of_planetary_motion}{2. Kepler's law}: ``A line segment joining a planet and the Sun sweeps out equal areas during equal intervals of time.''. Objects in a lower orbit must therefore move faster.\\
+$\Delta v$ can be understood as the whole change in velocity without the influence of drag and other parameters. If we were to simply separate the satellite from it's rocket then it might move away a little bit, but the orbit would stay more or less the same. To finally get into the target orbit, the satellite must first burn prograde (in the moving direction) at the apoapsis until it's velocity is as high as are all objects inside of the target orbit. For our ``synchronous orbit'' this would mean a velocity of $v = \sqrt{\frac{\mu}{r_{o}}} = 1110m/s$ for every object in this orbit, whereby $r_{o}$ must be the radius of a round orbit. The higher the orbit, the higher the potential energy and the lower the speed. Or \href{https://en.wikipedia.org/wiki/Kepler%27s_laws_of_planetary_motion}{2. Kepler's law}: ``A line segment joining a planet and the sun sweeps out equal areas during equal intervals of time.''. Objects in a lower orbit must therefore move faster.\\
 
 How much $\Delta v$ does the satellite need to get from the tranfer orbit to the target orbit?
 For this purpose we use the \hyperlink{visviva}{Vis-Viva Equation}:
@@ -386,14 +386,14 @@ $$
 $$
 If you really want to fly as economically as possible, then you should start with the very lowest possible orbit above the atmosphere, somewhere in between 70-80km. From there on you should raise the apoapsis ``directly'' to the height of the target orbit. After arriving at the apoapsis, the rocket should then raise it's periapsis for the correct transfer orbit.
 
-In this case you optimally want to raise the orbit only bit by bit by using the so-called ``orbit phasing'' method, just as Rocket Lab does it with it's \href{https://youtu.be/zC8RxgL9tK4?t=680}{Photon} Kick Stage on it's way to the moon.
+In this case you optimally want to raise the orbit only incrementally by using the so-called ``orbit phasing'' method, just as Rocket Lab does it with it's \href{https://youtu.be/zC8RxgL9tK4?t=680}{Photon} Kick Stage on it's way to the moon.
 \bildscaled{orbit_phasing}{orbit_phasing}{Orbit Phasing Maneuver}{1.0}
 
 
 \chapter{Mun Satellites}
-Mun is the closest neighbor to Kerbin. Strong antennas are therefore less relevant than a continuous communication connection with the vessels that might lie inside the mun shadow as seen from Kerbin (behind Mun). At worst case scenario, a loss of connection will lead to a complete loss of control. This is particularly relevant if you want to land on the moon's surface.\\
+Mun is the closest neighbor to Kerbin. Strong antennas are therefore less relevant than a continuous communication connection with the vessels that might lie inside the mun shadow as seen from Kerbin (behind Mun). In the worst case scenario, a loss of connection will lead to a complete loss of control. This is particularly relevant if you want to land on the moon's surface.\\
 
-Because the approach does not differ a lot from the one used on the Kerbin satellites, I won't go into detail as much.
+Because the approach does not differ much from the one used on the Kerbin satellites, I won't go into detail as much.
 \medskip
 \begin{flushright}
 \href{https://wiki.kerbalspaceprogram.com/wiki/Mun}{Mun Properties:} \\
@@ -415,7 +415,7 @@ $400km - 200km = 200km$ is the distance from the moon's surface for the lowest p
 Maximum Orbit:
 \end{flushleft}
 The maximum orbit lies shortly below the SOI, in other words, below the distance from which on Kerbin's pull starts to outweigh that of the moon.
-Also, from exceeding this ``threshold'' on, the point of reference is being switched for all the following calculations.
+Also, for everything exceeding this ``threshold'', the point of reference is being switched for all the following calculations.
 
 \begin{flushleft}
 Synchronous Orbit:
@@ -425,7 +425,7 @@ Unfortunately, a synchronous orbit is not possible as the orbit radius lies beyo
 \begin{flushleft}
 Optimum Orbit:
 \end{flushleft}
-Mike Aben specifies for the ideal orbit height a value of $337.35km$ and for the periapsis a value of $103.85km$. Of course the apoapsis has the same height as the target orbit.\\
+Mike Aben specifies a value of $337.35km$ for the ideal orbit height and a value of $103.85km$ for the periapsis. Of course the apoapsis has the same height as the target orbit.\\
 The reason: Mike Aben wants the satellites to be as small and with as few antennas as possible while maintaining a communication strength of about 80\%.
 I can only recommend \href{https://youtu.be/gpQmvwU1x8c}{The Best Relay Orbit - KSP Let's Do The Math \#13} just like the other videos on this channel.
 
@@ -480,8 +480,8 @@ v &= \sqrt{\mu \left( \frac{2}{r} - \frac{1}{a} \right) } \\
 
 The speed, at which Mun circles around Kerbin, is about $543m/s$.
 Minus the speed that the rocket already has at the height of the orbit of Mun, we get a velocity difference of $543m/s - 178.283m/s = 364.717m/s$.
-From entering the SOI of the moon on the rocket will begin to be pulled in by the moon's gravity. It is also relevant from which direction the rocket is coming and also the altitude at which it is passing  above the surface. It is advisable to always include about 5-10\% more $\Delta v$ than necessary (especially for landing attempts on the surface of Mun), but he who is interested might also want to become familiar with the so-called \href{https://youtu.be/ouJiNZ1pUv8}{Oberth Effect}. This is also directly related to the topic so so-called \href{https://youtu.be/16jr7WWGSxo}{Gravity Assists} which is especially useful for interplanetary missions.\\
-Alternatively you might want to take a look at the \href{https://wiki.kerbalspaceprogram.com/wiki/File:KerbinDeltaVMap.png}{Kerbin Delta-v Map} from the KPS-Community. On it, the $\Delta v$ values are listet in the same way like one a train timetable. For all those mathematicians between you, who want to know the exact origin of these values, Mike Aben has got you covered again: \href{https://youtu.be/rRP5doigXSM}{Calculating Transfer \& Capture Costs - The Mun | KSP Let's Do The Math}\\
+From entering the SOI of the moon on the rocket will begin to be pulled in by the moon's gravity. It is also relevant from which direction the rocket is coming and also the altitude at which it is passing  above the surface. It is advisable to always include about 5-10\% more $\Delta v$ than necessary (especially for landing attempts on the surface of Mun), but he who is interested might also want to become familiar with the so-called \href{https://youtu.be/ouJiNZ1pUv8}{Oberth Effect}. This is also directly related to the topic of the so-called \href{https://youtu.be/16jr7WWGSxo}{Gravity Assists} which is especially useful for interplanetary missions.\\
+Alternatively you might want to take a look at the \href{https://wiki.kerbalspaceprogram.com/wiki/File:KerbinDeltaVMap.png}{Kerbin Delta-v Map} by the KPS-Community. On it, the $\Delta v$ values are listed similarly to a train timetable. For the mathematicians among you, who want to know the exact origin of these values, Mike Aben has got you covered again: \href{https://youtu.be/rRP5doigXSM}{Calculating Transfer \& Capture Costs - The Mun | KSP Let's Do The Math}\\
 
 The steps are:\
 	\begin{enumerate}
@@ -517,7 +517,7 @@ The steps are:\
 	713 m/s - 523.34 m/s = 189.66 m/s
 	$$
 	
-	\emph{Therefore the rocket requires $\mathbf{\Delta v \approx 190 m/s}$ in order to insert into a munar orbit with a periapsis of $303.85km$ and an apoapsis of $537.35km$. The \href{https://wiki.kerbalspaceprogram.com/wiki/File:KerbinDeltaVMap.png}{Delta-v Map} lists a value of 310m/s, but that's because the 214km orbit that was used there is very low.}
+	\emph{Therefore the rocket requires $\mathbf{\Delta v \approx 190 m/s}$ in order to insert into a munar orbit with a periapsis of $303.85km$ and an apoapsis of $537.35km$. The \href{https://wiki.kerbalspaceprogram.com/wiki/File:KerbinDeltaVMap.png}{Delta-v Map} lists a value of 310m/s, but that is because the 214km orbit used is very low.}
 	\end{enumerate}
 	
 \end{enumerate}
@@ -541,7 +541,7 @@ Therefore the rocket must achieve a velocity difference of around $\mathbf{4450m
 
 
 
-\chapter{Minmus Satelliten}
+\chapter{Minmus Satellites}
 \begin{flushright}
 \href{https://wiki.kerbalspaceprogram.com/wiki/Minmus}{Minmus Properties:} \\
 Equatorial radius $ = 60km$ \\
@@ -566,7 +566,7 @@ With $357.941 km$ it is located far below the SOI.
 Optimum Orbit:
 \end{flushleft}
 The distance of the synchronous orbit creates an exceptionally large viewing angle onto the moon's surface.
-Furthermore the very low velocity at this altitude very much simplifies releasing the satellites accurately into their final orbit. The tranfer orbit has got an apoapsis of $357.941km$ and a periapsis of $159.9564km$. Alternatively you can use the online \href{https://meyerweb.com/eric/ksp/resonant-orbits/}{Resonant Orbit Calculator} from Eric Meyer for assistance.
+Furthermore the very low velocity at this altitude very much simplifies releasing the satellites accurately into their final orbit. The transfer orbit has got an apoapsis of $357.941km$ and a periapsis of $159.9564km$. Alternatively you can use the online \href{https://meyerweb.com/eric/ksp/resonant-orbits/}{Resonant Orbit Calculator} by Eric Meyer for assistance.
 
 \section{Delta-v budget of each satellite}
 \begin{flushright}
@@ -591,7 +591,7 @@ The rocket will execute four burn maneuvers:
 
 $\Delta v_{1} = 78.956 m/s$ (orbit change) including $3251.16 m/s$ (drag and planet rotation) $= 3330.116 m/s$ \\
 
-\item Orbit circularisation burn at the apoapsis to raise the periapsis to the same heigth.
+\item Orbit circularisation burn at the apoapsis to raise the periapsis to the same height.
 \begin{flushleft}
 $\Delta v_{2} = 76.382 m/s$
 \end{flushleft}
@@ -604,7 +604,7 @@ $\Delta v_{2} = 76.382 m/s$
 
 \item Minmus capture burn to fall into an orbit around Minmus.\\
 	\begin{enumerate}
-	\item $\Delta v_{2}$ (\ref{eq:visviva2}) for calculating the velocity differential compared to Minmus on exactly the right altitude above Kerbin in order to make rocket an moon intersect each other.
+	\item $\Delta v_{2}$ (\ref{eq:visviva2}) for calculating the velocity differential compared to Minmus on exactly the right altitude above Kerbin in order to make rocket and mun intersect each other.
 	\begin{equation*}
 	\begin{split}
 	\Delta v_{2} &= \sqrt{\frac{\mu}{r_{2}}} \left( 1-\sqrt{\frac{2r_{1}}{r_{1}+r_{2}}} \right) \\
@@ -677,7 +677,7 @@ Rocket ($\Delta v = 4470m/s$) with 3 satellites (each $\Delta v = 15m/s$) \\
 \section*{Antenna signal strength for each satellite}
 Communication between the three satellites and with the KSC.
 \href{https://wiki.kerbalspaceprogram.com/wiki/CommNet}{CommNet Wiki} \\
-A very helpful Excel document for for calculating the necessary anntenna signal strength you find at
+A very helpful Excel document for calculating the necessary antenna signal strength you can find at
 \href{https://forum.kerbalspaceprogram.com/index.php?/topic/149099-commnet-signal-strength-calculator-antenna-selector/}{CommNet Signal Strength Calculator \& Antenna Selector}, or \url{https://goo.gl/Wn03VL}
 \pagebreak 
 
@@ -716,15 +716,15 @@ Addons:
 
 \chapter{Programming the rocket}
 \section{Kerbal Operating System (kOS)}
-\href{https://ksp-kos.github.io/KOS/}{kOS} is a community project of the Kerbal Space Program fanbase. It's basically an autopilot that you have to write for yourself. The mod introduces a few own parts into the game, of which at least one has to be put onto the vessel in order to work. Each part consists of a ``scriptable control system'' and a limited storage medium. Also keep in mind that the control chip will require additional power.\\
+\href{https://ksp-kos.github.io/KOS/}{kOS} is a community project by the Kerbal Space Program fanbase. It's basically an autopilot that you have to write for yourself. The mod introduces a few original parts into the game, of which at least one has to be put onto the vessel in order for it to work. Each part consists of a ``scriptable control system'' and a limited storage medium. Also keep in mind that the control chip will require additional power.\\
 \linebreak 
-The File-Endung for Kerboscript is always ``ks'', for example ``launch.ks''.
+The File-Extention for Kerboscript is always ``ks'', for example ``launch.ks''.
 When opening the kOS-console in the simulator, one can then switch to the ``harddrive'' of the spacecraft by typing
 \begin{code}
 SWITCH TO 1.
 \end{code}
 \linebreak 
-\emph{1} stands for the vessel and \emph{0} for the Kerbal Space Center. Because it seems unrealistic for the rocket to be always control by the KSC, most players will transfer their script to the rocket before launching.
+\emph{1} stands for the vessel and \emph{0} for the Kerbal Space Center. Because it seems unrealistic for the rocket to be always controled by the KSC, most players will transfer their script to the rocket before launching.
 \begin{code}
 list.
 \end{code}
@@ -747,16 +747,17 @@ runpath("launch",90,90000,0.35). // or else
 run launch(90,90000,0.35).
 \end{code}
 \linebreak 
-The parameter \textbf{90} stands for the compass direction of rotation ``east'', \textbf{90000} for the target orbit height in metern and \textbf{0.35} for the tilting speed at the beginning, because the script is supposed to be used for different rocket types, which requiers the ability to use slightly different settings. \\
+The parameter \textbf{90} stands for the compass direction of rotation ``east'', \textbf{90000} for the target orbit height in meters and \textbf{0.35} for the tilting speed at the beginning, because the script is supposed to be used for different rocket types, which requiers the ability to use slightly different settings. \\
 
-For the beginning I want to suggest the tutorial-series from CheersKevin - \href{https://www.youtube.com/playlist?list=PLb6UbFXBdbCoCm1e65qfDOCdK_qIBtX3D}{kOS for Newbies}.
+For the beginning I want to suggest the tutorial-series by CheersKevin - \href{https://www.youtube.com/playlist?list=PLb6UbFXBdbCoCm1e65qfDOCdK_qIBtX3D}{kOS for Newbies}.
 Even suitable for future programmers! Not only can you launch rockets with those scripts, but also drones and even Airplanes.
 Two very impressive examples see here: \href{https://youtu.be/f4SytD3xR0k}{HoverBot drone}, \href{https://youtu.be/oAzGwSFi9Qg}{SpaceX Falcon Heavy}.\\
 
 
 \section{Reaching LEO - Low Earth Orbit}
-Reaching the first stable orbit is always a challenge, here as well in the real world. Apart from the gravitational pull, the rocket also has to fight aero dynamics and if you reach a too high velocity in too low of an altitude, even with heat and g-force. Furthermore the rocket has to be balanced by positioning the ``center of lift'' below the ``center of mass''. So just like a dart. Of course it helps a lot that most engines have the ability to ``gimble'' - that is, they can rotate the nozzle into multiple directions.
-In this way they can balance the rocket without the need of wings. In the real world you also want to pay attention to the weather in high altutudes. That's because in some heights, winds can reach high speeds of about 1000km/h, which is enough to split a rocket in half. Additionally there are also risks of lightning strikes because in different charged air layers the rocket might act just like a lightning rod. This in turn could potentially damage onboard circuits. Apollo 12 was victim to two such lightning strikes but was lucky insofar as it didn't create any permanent damage.\\
+Reaching the first stable orbit is always a challenge, here as well as in the real world. Apart from the gravitational pull, the rocket also has to fight aerodynamics and even with heat and
+g-force, if you reach a too high velocity in too low of an altitude. Furthermore the rocket has to be balanced by positioning the ``center of lift'' below the ``center of mass''. So just like a dart. Of course it helps a lot that most engines have the ability to ``gimble'' - that is, they can rotate the nozzle into multiple directions.
+In this way they can balance the rocket without the need of wings. In the real world you also want to pay attention to the weather in high altitudes. That is because in some heights, winds can reach high speeds of about 1000km/h, which is enough to split a rocket in half. Additionally there are also risks of lightning strikes because in differently charged air layers the rocket might act as a lightning rod. This in turn could potentially damage onboard circuits. Apollo 12 was victim to two such lightning strikes but was lucky insofar as it didn't create any permanent damage.\\
 
 In you ever watched a rocket launch, then you might have noticed that the rocket didn't just fly straight up, but that it began to tilt sideways after just a few seconds. This is called the ``pitching maneuver''.\\
 But why are rockets doing that?\\
@@ -911,8 +912,8 @@ main().
 \end{lstlisting}
 \begin{flushleft}
 The script shown here is also available on \href{https://github.com/Tornado3P9/kOS_Collection}{GitHub}. The beginning is sometimes difficult. Nevertheless, I want to encourage you to try to write your own script. It's not that difficult. Also there are already many good examples which might help you start....for example \href{https://kos.fandom.com/wiki/KerboScript}{this page}.\\
-Alternatively there is the mod \href{https://forum.kerbalspaceprogram.com/index.php?/topic/151340-19x-smart-parts-continued/}{Smart Parts} from linuxgurugamer, for which you don't even need to know how to program. I myself often use this mod in combination, where kerboscript handles the launch and circulation burn and the smart parts stage the fairing and other things that might differ from one rocket to the other.\\
-The following script just executes the next maneuver node on the active vessel's orbit. A big thanks to \href{https://www.youtube.com/playlist?list=PLb6UbFXBdbCoCm1e65qfDOCdK_qIBtX3D}{CheersKevin}.
+Alternatively there is the mod \href{https://forum.kerbalspaceprogram.com/index.php?/topic/151340-19x-smart-parts-continued/}{Smart Parts} by linuxgurugamer, for which you don't even need to know how to program. I myself often use this mod in combination, where kerboscript handles the launch and circulation burn and the smart parts stage the fairing and other things that might differ from one rocket to the other.\\
+The following script just executes the next maneuver node on the active vessel's orbit. Cheers to \href{https://www.youtube.com/playlist?list=PLb6UbFXBdbCoCm1e65qfDOCdK_qIBtX3D}{CheersKevin}.
 \end{flushleft}
 
 
@@ -1017,7 +1018,7 @@ $\Delta v_{2}$ stands for the cost of the second burn that will be executed at t
 
 Together they give the the $\Delta v$ budget of each spacecraft that transfers from one circular orbit into another circular orbit. \\
 Instead of $\sqrt{\frac{2r}{r_{1}+r_{2}}}$ one can also write $\sqrt{\frac{r}{a}}$. The original fraction divided by two shows the radius as the numerator and the semimajor axis as the denominator.\\
-For learning the origin of this formular I suggest the video from \href{https://youtu.be/7AkakB5TOSw}{Mike Aben}. Or perhaps on Wikiwand: \href{https://www.wikiwand.com/en/Hohmann_transfer_orbit}{Hohmann transfer orbit}.
+For learning the origin of this formular I suggest the video by \href{https://youtu.be/7AkakB5TOSw}{Mike Aben}. Or perhaps on Wikiwand: \href{https://www.wikiwand.com/en/Hohmann_transfer_orbit}{Hohmann transfer orbit}.
 
 \medskip
 The \href{https://en.wikipedia.org/wiki/vis-viva_equation}{Vis-viva equation} for the \hypertarget{velocityatorbitposition}{instantaneous velocity of a body} that is located on an orbit around another body is called:
@@ -1051,12 +1052,12 @@ Also insteresting to note: Until an \textbf{altitude} of somewhere around 500km 
 But even the ISS, with it's 400km is not that high, if you think about it. When the space shuttles were still flying, the ISS was even lower. On this altitude, the residual atmosphere is still so high that the ISS has to raise it's orbit about once a year. There is a wonderful animation \href{https://qz.com/296941/interactive-graphic-every-active-satellite-orbiting-earth/}{QUARTZ - every active satellite orbiting earth} that illustrates this pendulum motion very well.\\
 And another three-dimensional representation of all near earth objects you can find at \href{http://stuffin.space/}{stuffin.space}. You can even hide certain satellites and for instance only display GPS satellites. By the way, GPS satellites usually live inside the \href{https://en.wikipedia.org/wiki/Medium_Earth_orbit}{Medium Earth Orbit (MEO)}.
 
-In case of \textbf{SpaceX Starlink}, it's satellites only stay in orbit for as long they still have fuel in their tanks. That makes maintenance of those networks a little bit more difficult, but you have the certainty that any defect satellites will deorbit automaticly after 5 years and that no space debree will ever be left behind.
-Unlike other satellite providers who also use ion thruster, SpaceX decided to use Krypton as reaction mass instead of Xenon, which is more usual. Another name you may find is Hall-effect thruster (HET).
+In case of \textbf{SpaceX Starlink}, it's satellites only stay in orbit for as long they still have fuel in their tanks. That makes maintenance of those networks a little bit more difficult, but you have the certainty that any defect satellites will deorbit automatically after 5 years and that no space debree will ever be left behind.
+Unlike other satellite providers who also use ion thruster, SpaceX decided to use Krypton as reaction mass instead of Xenon, which is more common. Another name you may find is Hall-effect thruster (HET).
 
 \textbf{Factor of safety} often lies between 1.1 and 1.25, as is the case for ULA's rockets.
 It expresses how much stronger a system is than it needs to be for an intended load.
-For spacecrafts this factor is usually very low, because every millimeter that you add to the thickness of a tank wall, will probably add many kilos or even tons of extra weight, which in turn requires a stronger engine and more fuel...which adds more weight...wich reduces the payload mass that the rocket can bring with it into space.\\
+For spacecrafts this factor is usually very low, because every millimeter that you add to the thickness of a tank wall, will probably add many kilos or even tons of extra weight, which in turn requires a stronger engine and more fuel...which adds more weight...which reduces the payload mass that the rocket can bring with it into space.\\
 In contrast, a tractor can have a much higher FoS, because stability and sheer power are much more important  than are in this case weight or speed. See also \href{https://youtu.be/o0fG_lnVhHw}{HOW ROCKETS ARE MADE (Rocket Factory Tour - United Launch Alliance) - Smarter Every Day 231}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
